@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Activá la chapa de tu mascota</title>
+<meta name="theme-color" content="#10233a">
+<style>
+:root{--bg:#f2f5f8;--panel:#fff;--ink:#10233a;--muted:#5d6f84;--line:#d3dce6;--yellow:#ffcf33;--navy:#10233a}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1829;--panel:#15273d;--ink:#eaf0f6;--muted:#9fb1c5;--line:#2a4060;--navy:#08111e}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+header{background:var(--navy);color:#eaf0f6;padding:calc(28px + env(safe-area-inset-top)) 20px 30px}
+.wrap{max-width:560px;margin:0 auto}
+header .emoji{font-size:2.6rem;line-height:1}
+h1{font:800 clamp(1.9rem,8vw,2.5rem)/1.08 ui-rounded,"Arial Rounded MT Bold","Segoe UI",system-ui,sans-serif;margin:10px 0 8px}
+header p{margin:0;color:#c9d6e4}
+header b{color:var(--yellow)}
+main{padding:8px 18px 48px}
+.step{position:relative;background:var(--panel);border:2px solid var(--line);border-radius:20px;padding:20px 18px 18px 72px;margin:16px 0}
+.step::before{content:attr(data-n);position:absolute;left:16px;top:18px;width:42px;height:42px;border-radius:50%;background:var(--yellow);color:#10233a;font:800 1.3rem/42px ui-rounded,system-ui,sans-serif;text-align:center}
+.step h2{font-size:1.2rem;margin:2px 0 4px}
+.step p{margin:0 0 12px;color:var(--muted)}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:1.05rem;padding:15px 14px;border-radius:14px;border:2px solid var(--ink);background:var(--panel);color:var(--ink);margin-top:10px}
+.btn.main{background:var(--yellow);border-color:var(--yellow);color:#10233a;font-size:1.2rem;padding:18px 14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.two .btn{margin-top:0}
+ol.sub{margin:0;padding-left:20px;color:var(--ink)}
+ol.sub li{margin:6px 0}
+.ok{border-color:var(--yellow)}
+h3{font-size:1.1rem;margin:30px 0 8px}
+details{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:4px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:600;padding:12px 0}
+details p{margin:0 0 14px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 18px 36px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="emoji">🐾</div>
+    <h1>Activá la chapa de tu mascota</h1>
+    <p>Son <b>3 minutos</b>. No necesitás crear ninguna cuenta ni pagar nada. Hacelo desde este mismo celular.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="step" data-n="1">
+    <h2>Instalá NFC Tools</h2>
+    <p>Es una app gratuita que sirve para grabar los datos en la chapa.</p>
+    <div class="two">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.wakdev.wdnfc" target="_blank" rel="noopener">Android</a>
+      <a class="btn" href="https://apps.apple.com/app/nfc-tools/id1252962749" target="_blank" rel="noopener">iPhone</a>
+    </div>
+  </section>
+
+  <section class="step" data-n="2">
+    <h2>Cargá los datos de tu mascota</h2>
+    <p>Completá el nombre, tus teléfonos y un aviso si hace falta. Elegí el color y tocá <b>Copiar link</b>.</p>
+    <a class="btn main" href="./">Cargar los datos</a>
+  </section>
+
+  <section class="step" data-n="3">
+    <h2>Grabá el link en la chapa</h2>
+    <ol class="sub">
+      <li>Abrí <b>NFC Tools</b> y tocá <b>Escribir</b>.</li>
+      <li>Tocá <b>Agregar un registro</b> y elegí <b>URL / URI</b>.</li>
+      <li>Pegá el link que copiaste y tocá <b>Aceptar</b>.</li>
+      <li>Tocá <b>Escribir</b> y apoyá el celular sobre la chapa hasta que confirme.</li>
+    </ol>
+  </section>
+
+  <section class="step ok" data-n="4">
+    <h2>Probala</h2>
+    <p style="margin:0">Acercá otro celular a la chapa. Tiene que abrirse la ficha de tu mascota con tus teléfonos. ¡Listo, ya está protegida!</p>
+  </section>
+
+  <h3>Si algo no funciona</h3>
+  <details>
+    <summary>No me graba la chapa</summary>
+    <p>Revisá que el NFC esté activado en los ajustes del celular. Sacale la funda y apoyá la parte de atrás del celular (en el iPhone, la parte de arriba) sobre la chapa, sin moverlo hasta que confirme.</p>
+  </details>
+  <details>
+    <summary>Cambié de teléfono o quiero cambiar un dato</summary>
+    <p>Repetí los pasos 2 y 3. Podés volver a grabar la chapa las veces que quieras.</p>
+  </details>
+  <details>
+    <summary>¿Quien encuentre a mi mascota necesita una app?</summary>
+    <p>No. Solo tiene que acercar su celular a la chapa y tener conexión a internet. Funciona con Android con NFC y con iPhone XS o más nuevo.</p>
+  </details>
+  <details>
+    <summary>¿Con qué celular puedo grabarla?</summary>
+    <p>Con un Android con NFC o con un iPhone 7 o más nuevo con iOS 13 o superior.</p>
+  </details>
+</main>
+
+<footer>Tus datos quedan guardados solo en la chapa.</footer>
+</body>
+</html>
