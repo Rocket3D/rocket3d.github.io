@@ -1,1932 +1,277 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="description" content="Catálogo ROCKET3D: cuadros en relieve, letras corpóreas, lámparas, sensoriales, llaveros, mates, mascotas y más. Pedí por WhatsApp." />
-    <link rel="icon" href="img/logo.png" />
-    <title>CATALOGO Rocket3D</title>
-    <meta property="og:title" content="CATALOGO Rocket3D" />
-    <meta property="og:site_name" content="CATALOGO Rocket3D" />
-    <meta property="og:description" content="Catálogo ROCKET3D: cuadros en relieve, letras corpóreas, lámparas, sensoriales, llaveros, mates, mascotas y más. Pedí por WhatsApp." />
-    <meta name="twitter:title" content="CATALOGO Rocket3D" />
-    <meta name="application-name" content="CATALOGO Rocket3D" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #081226;
-        --bg-2: #0b1a33;
-        --panel: #0e2142;
-        --panel-2: #12294f;
-        --line: #1e3a66;
-        --ink: #eef3fb;
-        --muted: #9db1cc;
-        --orange: #ff7a1a;
-        --orange-2: #ffa25e;
-        --navy: #123a6e;
-        --wa: #25d366;
-        --wa-ink: #062b16;
-        --radius: 18px;
-        --shadow: 0 18px 40px rgba(0, 0, 0, .45);
-      }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        background:
-          radial-gradient(900px 480px at 85% -120px, rgba(255, 122, 26, .14), transparent 60%),
-          radial-gradient(1100px 600px at -10% 0%, rgba(18, 58, 110, .55), transparent 55%),
-          var(--bg);
-        color: var(--ink);
-        font-family: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
-      img, video { max-width: 100%; }
-      button { font: inherit; cursor: pointer; }
-      :focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tag de mascota</title>
+<style>
+:root{--bg:#f2f5f8;--panel:#fff;--ink:#10233a;--muted:#5d6f84;--line:#d3dce6;--yellow:#ffcf33;--yellow-ink:#10233a;--wa:#1b8f50;--bad:#c0392b;--ok:#1b8f50}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1829;--panel:#15273d;--ink:#eaf0f6;--muted:#9fb1c5;--line:#2a4060;--bad:#ff8b7d;--ok:#4cc884;--wa:#25a65f}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+main{max-width:520px;margin:0 auto;padding:0 18px 48px}
+[hidden]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
 
-      header.site {
-        position: sticky; top: 0; z-index: 40;
-        background: rgba(8, 18, 38, .88);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--line);
-        transition: transform .3s ease;
-      }
-      /* Al bajar, el encabezado se va para arriba y libera la pantalla;
-         al subir (o cerca del inicio) vuelve, con el WhatsApp a mano. */
-      header.site.nav-hidden { transform: translateY(-110%); }
-      .header-in {
-        max-width: 1180px; margin: 0 auto; padding: 10px 16px;
-        display: flex; align-items: center; gap: 12px;
-      }
-      .header-in img.logo { width: 46px; height: 46px; border-radius: 50%; flex: none; }
-      .brand { line-height: 1.05; min-width: 0; }
-      .brand .wordmark { font-weight: 900; font-size: 1.28rem; letter-spacing: .04em; }
-      .brand .wordmark em { font-style: normal; color: var(--orange); }
-      .brand .tag { font-size: .78rem; color: var(--muted); font-weight: 500; }
-      .header-wa {
-        margin-left: auto; flex: none;
-        display: inline-flex; align-items: center; gap: 8px;
-        background: var(--wa); color: var(--wa-ink);
-        font-weight: 800; font-size: .9rem; text-decoration: none;
-        padding: 10px 14px; border-radius: 999px;
-      }
-      .header-wa svg { width: 18px; height: 18px; }
-      .header-wa span.lbl { display: none; }
-      @media (min-width: 560px) { .header-wa span.lbl { display: inline; } }
+/* Visor */
+:root{--pg:#0e1b2c}
+body.view{background:var(--pg);color:#eaf0f6}
+.tag{position:relative;margin:58px auto 0;max-width:420px;transform-origin:50% -34px}
+@media (prefers-reduced-motion:no-preference){.tag{animation:swing 1.8s ease-out}}
+@keyframes swing{0%{rotate:-7deg}25%{rotate:5deg}50%{rotate:-3deg}75%{rotate:1.5deg}100%{rotate:0deg}}
+.ring{position:absolute;top:-34px;left:50%;width:68px;height:68px;margin-left:-34px;border:9px solid #c3ccd6;border-radius:50%;box-shadow:0 2px 0 #8d98a6;z-index:2}
+.card{position:relative;background:#fff;color:#10233a;border-radius:30px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.45)}
+.top{position:relative;color:#fff;padding:56px 24px 28px;background:var(--ac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cg fill='%23fff' fill-opacity='.13'%3E%3Cellipse cx='45' cy='58' rx='13' ry='10'/%3E%3Ccircle cx='28' cy='42' r='5'/%3E%3Ccircle cx='38' cy='33' r='5'/%3E%3Ccircle cx='52' cy='33' r='5'/%3E%3Ccircle cx='62' cy='42' r='5'/%3E%3C/g%3E%3C/svg%3E")}
+.hole{position:absolute;top:14px;left:50%;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--pg);box-shadow:inset 0 2px 5px rgba(0,0,0,.55)}
+.avatar{width:84px;height:84px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:2.8rem;margin-bottom:16px;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.hi{margin:0;font-size:1.1rem;opacity:.92}
+.name{font:800 clamp(2.6rem,14vw,3.8rem)/1 ui-rounded,"Arial Rounded MT Bold","Segoe UI",system-ui,sans-serif;margin:2px 0 12px;overflow-wrap:anywhere}
+.lost{margin:0;font-size:1.2rem;font-weight:600}
+.body{padding:22px 20px 26px}
+.fam{margin:0 0 16px;font-weight:600;color:#44566b}
+.btns{display:grid;gap:12px;margin:8px 0 24px}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;font-family:inherit;font-weight:700;font-size:1.15rem;line-height:1.2;padding:18px 16px;border-radius:14px;border:2px solid var(--ink);background:var(--panel);color:var(--ink);cursor:pointer}
+.btn.main{background:var(--yellow);color:var(--yellow-ink);border-color:var(--yellow);font-size:1.35rem;padding:22px 16px}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.card .btns{margin:0}
+.card .btn{background:#fff;color:#10233a;border-color:#10233a;padding:16px 14px}
+.card .btn.main{background:var(--ac);border-color:var(--ac);color:#fff;font-size:1.3rem;padding:20px 14px}
+.card .btn.wa{background:#1b8f50;border-color:#1b8f50;color:#fff}
+.btn svg{width:22px;height:22px;vertical-align:-4px;margin-right:8px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn small{display:block;font-weight:500;font-size:.95rem;margin-top:3px;opacity:.92}
+.note{margin:18px 0 0;padding:14px 16px;border-radius:14px;background:#fff4e0;border:2px solid #f0b445;color:#4a3205}
+.note b{display:block;margin-bottom:2px}
+.note p{margin:0;overflow-wrap:anywhere}
+.help{list-style:none;counter-reset:s;margin:24px 0 0;padding:0;color:#44566b}
+.help h2{font-size:1.05rem;margin:0 0 6px;color:#10233a}
+.help ol{list-style:none;margin:0;padding:0}
+.help li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;margin:10px 0}
+.help li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;font-weight:700;font-size:.9rem;display:grid;place-items:center}
+body.view .foot{text-align:center;margin:22px 0 0;color:#8ea0b5}
+.sw{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.sw label{display:block;margin:0;position:relative}
+.sw input{position:absolute;opacity:0;width:1px;height:1px;padding:0;border:0}
+.sw span{display:block;width:46px;height:46px;border-radius:50%;border:3px solid transparent;box-shadow:inset 0 0 0 3px var(--panel);cursor:pointer}
+.sw input:checked+span{border-color:var(--ink)}
+.sw input:focus-visible+span{outline:3px solid var(--yellow);outline-offset:2px}
+.foot{font-size:.85rem;color:var(--muted)}
 
-      /* Franja informativa de envíos: va justo debajo del encabezado, en
-         el flujo normal de la página (no es fija: al scrollear se va con
-         el resto y no ocupa pantalla). Al tocarla se abre el carrito. */
-      .ship-banner {
-        display: block; width: 100%; border: 0; border-bottom: 2px solid var(--orange);
-        background: var(--navy); color: #fff;
-        font-size: .86rem; font-weight: 600; line-height: 1.4; text-align: center;
-        padding: 8px 16px;
-      }
-      .ship-banner:hover { background: #16467f; }
+/* Generador */
+h1{font:800 1.8rem/1.15 ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;margin:28px 0 6px}
+.lead{color:var(--muted);margin:0 0 22px}
+label{display:block;font-weight:600;margin:16px 0 4px}
+.hint{font-weight:400;color:var(--muted);font-size:.88rem}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:10px;padding:12px}
+textarea{min-height:84px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+.out{margin-top:28px;border-top:2px solid var(--line);padding-top:8px}
+.link{width:100%;font:.85rem/1.4 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;background:var(--panel);border:2px dashed var(--line);border-radius:10px;padding:12px;min-height:64px;margin:6px 0 10px}
+.meter{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ok)}
+.meter.bad i{background:var(--bad)}
+.size{font-size:.9rem;margin:6px 0 14px;color:var(--muted)}
+.size.bad{color:var(--bad);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.two .btn{padding:14px 10px;font-size:1rem}
+ol{padding-left:22px;margin:10px 0}
+li{margin:6px 0}
+</style>
+</head>
+<body>
+<main>
 
-      main { max-width: 1180px; margin: 0 auto; padding: 0 16px 120px; }
-
-      .intro { padding: 26px 0 6px; }
-      .intro h1 {
-        margin: 0 0 8px; font-size: clamp(1.7rem, 5.4vw, 2.6rem);
-        font-weight: 900; letter-spacing: -.01em; line-height: 1.08; max-width: 22ch;
-      }
-      .intro h1 em { font-style: normal; color: var(--orange); }
-      .intro p { margin: 0; color: var(--muted); font-size: 1rem; max-width: 58ch; line-height: 1.5; }
-      .intro p strong { color: var(--ink); }
-
-      /* Buscador y categorías NO quedan fijos: al scrollear se van para
-         arriba junto con el resto de la página y no ocupan pantalla. */
-      .tools { padding: 14px 0 10px; }
-      .search {
-        display: flex; align-items: center; gap: 10px;
-        background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
-        padding: 10px 16px;
-      }
-      .search svg { width: 18px; height: 18px; color: var(--muted); flex: none; }
-      .search input {
-        border: 0; background: transparent; color: var(--ink); width: 100%;
-        font: inherit; font-size: 1rem; outline: none;
-      }
-      .search input::placeholder { color: var(--muted); }
-      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-      .chip {
-        border: 1px solid var(--line); background: var(--panel); color: var(--muted);
-        border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: .86rem;
-      }
-      .chip[aria-pressed="true"] { background: var(--orange); border-color: var(--orange); color: #231203; }
-
-      .grid {
-        display: grid; gap: 16px; margin-top: 10px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
-      @media (min-width: 1024px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-      .card {
-        background: linear-gradient(180deg, var(--panel-2), var(--panel));
-        border: 1px solid var(--line); border-radius: var(--radius);
-        overflow: hidden; display: flex; flex-direction: column;
-      }
-      .media { position: relative; aspect-ratio: 4 / 3; background: #0a1830; overflow: hidden; }
-      .media img.ph, .media video { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .media .tile {
-        position: absolute; inset: 0; display: flex; flex-direction: column;
-        align-items: center; justify-content: center; gap: 10px;
-        background:
-          radial-gradient(220px 160px at 50% 38%, rgba(255, 122, 26, .16), transparent 70%),
-          radial-gradient(300px 220px at 50% 110%, rgba(18, 58, 110, .8), transparent 70%),
-          #0c1d3a;
-      }
-      .media .tile img { width: 92px; height: 92px; border-radius: 50%; box-shadow: 0 10px 26px rgba(0,0,0,.5); }
-      .media .tile span { font-size: .72rem; font-weight: 800; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
-      .cat-badge {
-        position: absolute; top: 10px; left: 10px; z-index: 3;
-        background: rgba(6, 14, 30, .78); color: #ffd9ba; border: 1px solid rgba(255,122,26,.45);
-        font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
-        padding: 5px 9px; border-radius: 999px; backdrop-filter: blur(4px);
-      }
-      .video-badge {
-        position: absolute; left: 10px; bottom: 10px; z-index: 3;
-        background: rgba(6, 14, 30, .8); color: var(--ink);
-        font-size: .68rem; font-weight: 800; letter-spacing: .08em;
-        padding: 5px 9px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px;
-      }
-      .video-badge i { width: 0; height: 0; border-left: 7px solid var(--orange); border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; }
-      .play-btn {
-        position: absolute; inset: 0; z-index: 2; border: 0; background: transparent;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .play-btn::before {
-        content: ""; width: 58px; height: 58px; border-radius: 50%;
-        background: rgba(6, 14, 30, .72); border: 1.5px solid rgba(255,255,255,.5);
-        backdrop-filter: blur(3px);
-      }
-      .play-btn::after {
-        content: ""; position: absolute; margin-left: 4px;
-        border-left: 17px solid #fff; border-top: 11px solid transparent; border-bottom: 11px solid transparent;
-      }
-      .play-btn.playing { opacity: 0; pointer-events: none; }
-      .card-body { padding: 13px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-      .card-body h3 { margin: 0; font-size: 1rem; font-weight: 800; line-height: 1.25; }
-      .card-body .desc {
-        margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.45;
-        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-      }
-      .buy-row { margin-top: auto; padding-top: 8px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-      .price { font-size: 1.22rem; font-weight: 900; color: var(--orange-2); letter-spacing: -.01em; }
-      .price small { display: block; font-size: .68rem; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
-      .price.consult { font-size: .95rem; color: var(--ink); }
-      .price .antes { color: var(--muted); font-size: .85rem; font-weight: 700; margin-right: 7px; }
-      .add-btn {
-        margin-left: auto; border: 0; border-radius: 999px;
-        background: var(--orange); color: #231203; font-weight: 800; font-size: .9rem;
-        padding: 10px 16px; display: inline-flex; align-items: center; gap: 7px;
-      }
-      .add-btn:active { transform: scale(.97); }
-      .stepper {
-        margin-left: auto; display: inline-flex; align-items: center; gap: 2px;
-        background: var(--navy); border: 1px solid var(--line); border-radius: 999px; padding: 3px;
-      }
-      .stepper button {
-        width: 34px; height: 34px; border-radius: 50%; border: 0;
-        background: var(--orange); color: #231203; font-weight: 900; font-size: 1.05rem; line-height: 1;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .stepper .qty { min-width: 30px; text-align: center; font-weight: 800; }
-      .empty-msg { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 44px 10px; font-size: 1rem; }
-
-      .card .media, .card-body h3 { cursor: pointer; }
-      .star-badge {
-        position: absolute; bottom: 10px; right: 10px; z-index: 3;
-        background: var(--orange); color: #231203;
-        font-size: .68rem; font-weight: 900; letter-spacing: .05em; text-transform: uppercase;
-        padding: 5px 9px; border-radius: 999px;
-      }
-      .section-head { display: flex; align-items: baseline; gap: 10px; margin: 10px 0 2px; }
-      .section-head h2 { margin: 0; font-size: 1.4rem; font-weight: 900; letter-spacing: -.01em; }
-      .section-head h2 em { font-style: normal; color: var(--orange); }
-      .featured { margin-top: 20px; }
-      .featured .card { border-color: rgba(255, 122, 26, .55); }
-      .all-head { margin-top: 36px; }
-
-      /* ---------- Vista de detalle ---------- */
-      .detail {
-        position: fixed; inset: 0; z-index: 58; background: var(--bg);
-        overflow-y: auto; overscroll-behavior: contain;
-      }
-      .detail[hidden] { display: none; }
-      .detail-in { max-width: 1180px; margin: 0 auto; padding: 0 16px 64px; }
-      .detail-top {
-        position: sticky; top: 0; z-index: 5;
-        display: flex; align-items: center; gap: 10px; padding: 12px 0;
-        background: rgba(8, 18, 38, .92); backdrop-filter: blur(10px);
-      }
-      .back-btn {
-        display: inline-flex; align-items: center; gap: 8px;
-        border: 1px solid var(--line); background: var(--panel); color: var(--ink);
-        font-weight: 800; font-size: .92rem; padding: 10px 16px; border-radius: 999px;
-      }
-      .detail-close {
-        margin-left: auto; width: 38px; height: 38px; border-radius: 50%; flex: none;
-        border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-size: 1.05rem;
-      }
-      .detail-body { display: grid; gap: 22px; margin-top: 10px; }
-      @media (min-width: 840px) {
-        .detail-body { grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: start; }
-      }
-      .d-stage {
-        aspect-ratio: 1 / 1; max-height: 80vh; border-radius: var(--radius); overflow: hidden;
-        background: #0a1830; border: 1px solid var(--line); position: relative;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .d-stage img, .d-stage video { width: 100%; height: 100%; object-fit: contain; display: block; }
-      .d-stage-wrap { position: relative; }
-      .zoom-wrap {
-        width: 100%; height: 100%; overflow: hidden;
-        display: flex; align-items: center; justify-content: center; touch-action: pan-y;
-      }
-      .zoom-wrap img.zoom-img { cursor: zoom-in; user-select: none; -webkit-user-select: none; will-change: transform; }
-      .d-count {
-        position: absolute; top: 10px; right: 10px; z-index: 4;
-        background: rgba(6, 14, 30, .8); color: var(--ink);
-        font-size: .74rem; font-weight: 800; letter-spacing: .05em;
-        padding: 5px 10px; border-radius: 999px; pointer-events: none;
-      }
-      .d-expand {
-        position: absolute; right: 10px; bottom: 10px; z-index: 4;
-        width: 42px; height: 42px; border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, .35); background: rgba(6, 14, 30, .78); color: #fff;
-        font-size: 1.15rem; line-height: 1; display: flex; align-items: center; justify-content: center;
-      }
-      .d-hint { color: var(--muted); font-size: .8rem; margin: 8px 2px 0; line-height: 1.45; }
-
-      /* ---------- Video: botón de sonido ----------
-         El video arranca en silencio (condición de los navegadores para
-         reproducirlo solo en el celular). El botón de sonido es un círculo
-         chico, solo con el ícono, abajo a la derecha y por encima de la
-         barra de controles nativa. Se ve bien unos segundos al aparecer
-         el video o al tocarlo, y después se atenúa solo hasta quedar
-         apenas visible (semitransparente): no tapa el video, pero sigue
-         ahí para activarlo con un toque. */
-      .vid-wrap { position: relative; width: 100%; height: 100%; }
-      .vid-wrap video { width: 100%; height: 100%; display: block; }
-      .mute-btn {
-        position: absolute; right: 10px; bottom: 56px; z-index: 6;
-        width: 42px; height: 42px; padding: 0; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        border: 1px solid rgba(255, 255, 255, .45);
-        background: rgba(4, 10, 22, .72); color: #fff;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, .4);
-        opacity: .38; transition: opacity .45s ease;
-        cursor: pointer;
-        touch-action: manipulation; -webkit-tap-highlight-color: transparent;
-      }
-      .mute-btn.show, .vid-wrap:hover .mute-btn, .mute-btn:focus-visible { opacity: 1; }
-      @media (prefers-reduced-motion: reduce) { .mute-btn { transition: none; } }
-      .mute-btn svg { width: 21px; height: 21px; flex: none; }
-      .mute-btn .ic-on { display: none; }
-      .mute-btn.on { background: var(--orange); border-color: var(--orange); color: #231203; }
-      .mute-btn.on .ic-on { display: block; }
-      .mute-btn.on .ic-off { display: none; }
-      /* En pantalla completa el botón sube un poco más, para quedar
-         también por encima de la barra inferior con el contador. */
-      .lb-stage .mute-btn { right: 14px; bottom: calc(92px + env(safe-area-inset-bottom)); }
-
-      /* ---------- Pantalla completa ---------- */
-      .lightbox { position: fixed; inset: 0; z-index: 70; background: rgba(3, 8, 18, .97); }
-      .lightbox[hidden] { display: none; }
-      .lb-stage {
-        position: absolute; inset: 0; overflow: hidden;
-        display: flex; align-items: center; justify-content: center;
-      }
-      .lb-stage .zoom-wrap { touch-action: none; }
-      .lb-stage img, .lb-stage video { width: 100%; height: 100%; object-fit: contain; display: block; }
-      .lb-close {
-        position: absolute; top: 14px; right: 14px; z-index: 5;
-        width: 44px; height: 44px; border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, .35); background: rgba(6, 14, 30, .82); color: #fff; font-size: 1.05rem;
-      }
-      .lb-nav {
-        position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
-        width: 46px; height: 46px; border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, .35); background: rgba(6, 14, 30, .82); color: #fff;
-        font-size: 1.6rem; line-height: 1; display: flex; align-items: center; justify-content: center;
-      }
-      .lb-nav.prev { left: 12px; }
-      .lb-nav.next { right: 12px; }
-      .lb-bar {
-        position: absolute; left: 0; right: 0; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 5;
-        display: flex; align-items: center; justify-content: center; gap: 10px;
-      }
-      .lb-count {
-        color: var(--ink); font-weight: 800; font-size: .85rem;
-        background: rgba(6, 14, 30, .82); padding: 9px 13px; border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, .2);
-      }
-      .lb-zbtn {
-        width: 40px; height: 40px; border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, .35); background: rgba(6, 14, 30, .82); color: #fff;
-        font-weight: 900; font-size: 1.05rem; line-height: 1;
-        display: inline-flex; align-items: center; justify-content: center;
-      }
-      .lb-zbtn.txt { width: auto; padding: 0 13px; border-radius: 999px; font-size: .78rem; }
-      .d-tile { text-align: center; color: var(--muted); padding: 20px; }
-      .d-tile img { width: 92px; height: 92px; border-radius: 50%; margin-bottom: 10px; }
-      .d-tile span { display: block; font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-      .d-thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-      .d-thumb {
-        width: 68px; height: 68px; border-radius: 12px; overflow: hidden; position: relative;
-        border: 2px solid var(--line); background: #0a1830; padding: 0; flex: none;
-      }
-      .d-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .d-thumb[aria-pressed="true"] { border-color: var(--orange); }
-      .d-thumb.vid::after {
-        content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-38%, -50%);
-        border-left: 13px solid #fff; border-top: 8px solid transparent; border-bottom: 8px solid transparent;
-        filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .8));
-      }
-      .d-cat {
-        display: inline-block; color: #ffd9ba; border: 1px solid rgba(255, 122, 26, .45);
-        background: var(--panel); font-size: .68rem; font-weight: 800; letter-spacing: .06em;
-        text-transform: uppercase; padding: 5px 9px; border-radius: 999px;
-      }
-      .d-star { color: var(--orange-2); font-weight: 800; margin: 12px 0 0; font-size: .88rem; letter-spacing: .04em; text-transform: uppercase; }
-      .detail-info h2 { margin: 8px 0 10px; font-size: 1.55rem; font-weight: 900; line-height: 1.15; }
-      .d-desc { color: #c7d5ea; line-height: 1.65; font-size: 1rem; margin: 0 0 18px; }
-      .detail-info .buy-row { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 0; }
-      .detail-info .price { font-size: 1.5rem; }
-      .d-note { color: var(--muted); font-size: .88rem; line-height: 1.5; margin: 14px 0 0; }
-
-      footer.site { border-top: 1px solid var(--line); margin-top: 48px; background: var(--bg-2); }
-      .footer-in { max-width: 1180px; margin: 0 auto; padding: 28px 16px 40px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
-      .footer-in img { width: 52px; height: 52px; border-radius: 50%; }
-      .footer-in .f-brand { font-weight: 900; letter-spacing: .04em; }
-      .footer-in .f-brand em { font-style: normal; color: var(--orange); }
-      .footer-in p { margin: 2px 0 0; color: var(--muted); font-size: .86rem; }
-      .footer-links { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
-      .footer-links a {
-        color: var(--ink); text-decoration: none; border: 1px solid var(--line);
-        background: var(--panel); padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: .88rem;
-        display: inline-flex; align-items: center; gap: 9px;
-      }
-      .footer-links a svg { width: 19px; height: 19px; flex: none; }
-
-      .cart-fab {
-        position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 50;
-        display: inline-flex; align-items: center; gap: 10px;
-        background: var(--orange); color: #231203; border: 0; border-radius: 999px;
-        padding: 14px 20px; font-weight: 900; font-size: 1rem; box-shadow: var(--shadow);
-      }
-      .cart-fab svg { width: 22px; height: 22px; }
-      .cart-fab .count {
-        background: #231203; color: #ffb37a; min-width: 24px; height: 24px; border-radius: 999px;
-        display: inline-flex; align-items: center; justify-content: center; font-size: .82rem; padding: 0 6px;
-      }
-      .cart-fab.bump { animation: bump .35s ease; }
-      @keyframes bump { 30% { transform: scale(1.08); } }
-
-      .backdrop {
-        position: fixed; inset: 0; z-index: 60; background: rgba(3, 8, 18, .66);
-        opacity: 0; pointer-events: none; transition: opacity .25s ease;
-      }
-      .backdrop.open { opacity: 1; pointer-events: auto; }
-      .drawer {
-        position: fixed; top: 0; right: 0; bottom: 0; z-index: 61;
-        width: min(430px, 100vw); background: var(--bg-2);
-        border-left: 1px solid var(--line); box-shadow: var(--shadow);
-        transform: translateX(105%); transition: transform .3s ease;
-        display: flex; flex-direction: column;
-      }
-      .drawer.open { transform: translateX(0); }
-      .drawer[hidden] { display: none; }
-      .drawer header {
-        display: flex; align-items: center; gap: 10px; padding: 16px 18px;
-        border-bottom: 1px solid var(--line);
-      }
-      .drawer header h2 { margin: 0; font-size: 1.15rem; font-weight: 900; }
-      .drawer header .close {
-        margin-left: auto; width: 38px; height: 38px; border-radius: 50%;
-        border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-size: 1.05rem;
-      }
-      .drawer .lines { flex: 1; overflow-y: auto; padding: 8px 18px; }
-      .line { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-      .line:last-child { border-bottom: 0; }
-      .line .thumb { width: 62px; height: 62px; border-radius: 12px; object-fit: cover; flex: none; background: #0c1d3a; }
-      .line .thumb.tile { display: flex; align-items: center; justify-content: center; }
-      .line .thumb.tile img { width: 40px; height: 40px; border-radius: 50%; }
-      .line .info { flex: 1; min-width: 0; }
-      .line .info h4 { margin: 0 0 2px; font-size: .94rem; font-weight: 800; line-height: 1.3; }
-      .line .info .unit { color: var(--muted); font-size: .8rem; }
-      .line .row2 { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-      .line .stepper { margin-left: 0; }
-      .line .stepper button { width: 29px; height: 29px; font-size: .95rem; }
-      .line .line-total { margin-left: auto; font-weight: 900; color: var(--orange-2); }
-      .line .remove {
-        align-self: flex-start; border: 0; background: transparent; color: var(--muted);
-        padding: 4px; display: flex;
-      }
-      .line .remove svg { width: 18px; height: 18px; }
-      .cart-empty { text-align: center; padding: 52px 12px; color: var(--muted); }
-      .cart-empty img { width: 92px; height: 92px; border-radius: 50%; opacity: .85; margin-bottom: 14px; }
-      .cart-empty p { margin: 0; font-size: 1rem; }
-      .drawer footer { border-top: 1px solid var(--line); padding: 16px 18px calc(16px + env(safe-area-inset-bottom)); }
-      .total-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
-      .total-row .t-label { font-weight: 700; color: var(--muted); }
-      .total-row .t-value { font-size: 1.45rem; font-weight: 900; color: var(--orange-2); }
-      .sub-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 2px 0; font-size: .9rem; }
-      .sub-row .s-label { color: var(--muted); font-weight: 600; }
-      .sub-row .s-value { font-weight: 800; color: var(--ink); text-align: right; }
-      .sub-row .s-value.free { color: var(--wa); }
-      .sub-row .s-value.pending { color: var(--muted); font-weight: 600; font-size: .84rem; }
-      /* ---------- Calculadora de envíos PAQ.AR ---------- */
-      .drawer footer { max-height: 72vh; overflow-y: auto; }
-      .ship-calc {
-        background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
-        padding: 13px 13px 11px; margin-bottom: 13px; text-align: left;
-      }
-      .ship-calc[hidden] { display: none; }
-      .ship-calc h3 { margin: 0; font-size: 1rem; font-weight: 900; line-height: 1.25; }
-      .ship-calc h3 span { display: block; margin-top: 2px; font-size: .7rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--orange-2); }
-      .ship-field-label { display: block; margin: 11px 0 6px; font-size: .78rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-      .ship-select {
-        width: 100%; min-height: 46px; padding: 10px 12px;
-        background: var(--panel-2); color: var(--ink);
-        border: 1px solid var(--line); border-radius: 10px;
-        font: inherit; font-size: .95rem; font-weight: 600;
-      }
-      .ship-select option { background: var(--panel-2); color: var(--ink); }
-      .ship-hint { margin: 10px 0 0; color: var(--muted); font-size: .84rem; line-height: 1.45; }
-      .ship-special {
-        margin-top: 10px; padding: 10px 12px; border-radius: 10px;
-        background: rgba(37, 211, 102, .1); border: 1px solid rgba(37, 211, 102, .45);
-        font-size: .88rem; line-height: 1.45;
-      }
-      .ship-special[hidden], .ship-services[hidden] { display: none; }
-      .ship-special strong { display: block; font-size: .95rem; }
-      .ship-special .free-tag { color: var(--wa); font-weight: 900; }
-      .ship-svc-list { display: flex; flex-direction: column; gap: 7px; }
-      .svc-option {
-        display: flex; align-items: center; gap: 10px;
-        padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px;
-        background: var(--panel-2); cursor: pointer; min-height: 46px;
-      }
-      .svc-option input { accent-color: var(--orange); width: 18px; height: 18px; flex: none; margin: 0; }
-      .svc-option .svc-info { flex: 1; min-width: 0; }
-      .svc-option .svc-name { display: block; font-size: .88rem; font-weight: 800; line-height: 1.3; }
-      .svc-option .svc-plazo { display: block; font-size: .76rem; color: var(--muted); margin-top: 1px; }
-      .svc-option .svc-price { font-weight: 900; color: var(--orange-2); font-size: .95rem; white-space: nowrap; }
-      .svc-option:has(input:checked) { border-color: var(--orange); background: rgba(255, 122, 26, .12); }
-      .ship-note { margin: 11px 0 0; color: var(--muted); font-size: .76rem; line-height: 1.5; }
-      /* ---------- Datos de pago / seña del 50% ---------- */
-      .pay-block {
-        background: var(--panel); border: 1px solid rgba(255, 122, 26, .55); border-radius: 14px;
-        padding: 13px; margin: 12px 0 13px; text-align: left;
-      }
-      .pay-block[hidden] { display: none; }
-      .pay-block h3 { margin: 0; font-size: 1rem; font-weight: 900; line-height: 1.25; }
-      .pay-block h3 span { display: block; margin-top: 2px; font-size: .7rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--orange-2); }
-      .pay-data { margin-top: 11px; display: flex; flex-direction: column; gap: 7px; }
-      .pay-data .pay-line { display: flex; align-items: baseline; gap: 10px; font-size: .92rem; line-height: 1.4; }
-      .pay-data .pay-line .k { color: var(--muted); font-weight: 700; min-width: 86px; flex: none; font-size: .8rem; letter-spacing: .03em; text-transform: uppercase; }
-      .pay-data .pay-line .v { font-weight: 800; color: var(--ink); word-break: break-all; }
-      .pay-alias-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-      .copy-alias {
-        border: 1px solid var(--line); background: var(--panel-2); color: var(--ink);
-        border-radius: 999px; padding: 6px 11px; font-weight: 800; font-size: .78rem; min-height: 32px;
-      }
-      .copy-alias:active { transform: scale(.97); }
-      .pay-amounts { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 5px; }
-      .pay-amounts .pay-amt { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-      .pay-amounts .pay-amt .k { color: var(--muted); font-weight: 600; font-size: .9rem; }
-      .pay-amounts .pay-amt .v { font-weight: 800; text-align: right; }
-      .pay-amounts .pay-amt.main .k { color: var(--ink); font-weight: 800; }
-      .pay-amounts .pay-amt.main .v { color: var(--orange-2); font-size: 1.22rem; font-weight: 900; }
-      .pay-block .pay-note { margin: 11px 0 0; color: var(--muted); font-size: .84rem; line-height: 1.5; }
-      .pay-block .pay-note strong { color: var(--ink); }
-      .drawer footer .note { margin: 0 0 14px; color: var(--muted); font-size: .84rem; line-height: 1.45; }
-      .wa-order {
-        display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
-        background: var(--wa); color: var(--wa-ink); border: 0; border-radius: 14px;
-        padding: 15px; font-weight: 900; font-size: 1.02rem; text-decoration: none;
-      }
-      .wa-order svg { width: 22px; height: 22px; }
-      .wa-order.disabled { opacity: .45; pointer-events: none; }
-      .clear-cart {
-        display: block; margin: 12px auto 0; background: transparent; border: 0;
-        color: var(--muted); font-weight: 700; font-size: .86rem; text-decoration: underline;
-      }
-      .toast {
-        position: fixed; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); z-index: 55;
-        transform: translate(-50%, 16px); opacity: 0; pointer-events: none; z-index: 80;
-        background: #12325f; border: 1px solid var(--line); color: var(--ink);
-        padding: 11px 18px; border-radius: 999px; font-weight: 700; font-size: .9rem;
-        box-shadow: var(--shadow); transition: opacity .25s ease, transform .25s ease;
-        max-width: calc(100vw - 32px); text-align: center;
-      }
-      .toast.show { opacity: 1; transform: translate(-50%, 0); }
-      body.no-scroll { overflow: hidden; }
-
-      /* ---------- Optimización para smartphones ----------
-         La mayoría visita desde el celular: encabezado compacto,
-         categorías en UNA sola fila deslizable (nada de ocupar media
-         pantalla), tarjetas más ajustadas y todo lo tocable con al
-         menos 44px de alto para acertar con el dedo. */
-      button, .chip, .add-btn, a { touch-action: manipulation; }
-      @media (max-width: 719px) {
-        main { padding: 0 12px 150px; }
-        .header-in { padding: 8px 12px; gap: 9px; }
-        .header-in img.logo { width: 38px; height: 38px; }
-        .brand .wordmark { font-size: 1.1rem; }
-        .brand .tag { font-size: .68rem; }
-        .header-wa { padding: 9px 12px; font-size: .84rem; }
-        .intro { padding: 18px 0 2px; }
-        .intro p { font-size: .94rem; }
-        .tools { padding: 10px 0 4px; }
-        .search { padding: 9px 14px; }
-        .chips {
-          flex-wrap: nowrap; overflow-x: auto; gap: 7px; margin-top: 10px;
-          margin-left: -12px; margin-right: -12px; padding: 2px 12px 8px;
-          scrollbar-width: none; -webkit-overflow-scrolling: touch;
-        }
-        .chips::-webkit-scrollbar { display: none; }
-        .chip {
-          flex: none; display: inline-flex; align-items: center;
-          min-height: 42px; padding: 8px 13px; font-size: .84rem;
-        }
-        .grid { gap: 10px; margin-top: 6px; }
-        /* En tarjetas angostas las insignias se pisaban entre sí: la de
-           categoría arriba a la izquierda, «VIDEO» abajo a la izquierda
-           y «DESTACADO» en su propia fila, debajo de la de categoría. */
-        .star-badge { top: 42px; bottom: auto; }
-        .card-body { padding: 11px 11px 12px; gap: 5px; }
-        .card-body h3 { font-size: .93rem; }
-        .card-body .desc { -webkit-line-clamp: 2; font-size: .8rem; }
-        .price { font-size: 1.08rem; }
-        .add-btn { min-height: 44px; padding: 10px 13px; font-size: .86rem; }
-        .stepper button { width: 36px; height: 36px; }
-        .section-head h2 { font-size: 1.22rem; }
-        .featured { margin-top: 14px; }
-        .all-head { margin-top: 26px; }
-        .detail-in { padding: 0 12px 48px; }
-        .d-stage { max-height: 68vh; }
-        .d-thumb { width: 60px; height: 60px; }
-        .detail-info h2 { font-size: 1.35rem; }
-        /* Botón del carrito en el celular: círculo compacto SOLO con el
-           ícono (el total se ve al abrir el carrito), anclado abajo a la
-           IZQUIERDA. Los botones «+ Agregar» de las tarjetas van siempre
-           a la derecha de cada tarjeta, así el flotante no puede tapar
-           ni bloquear ninguno en ninguna posición de scroll. El contador
-           queda como insignia en la esquina del círculo. */
-        .cart-fab {
-          left: 12px; right: auto; width: 56px; height: 56px;
-          padding: 0; border-radius: 50%; justify-content: center; gap: 0;
-        }
-        .cart-fab #fabTotal { display: none; }
-        .cart-fab .count {
-          position: absolute; top: -5px; right: -5px;
-          border: 2px solid var(--bg);
-        }
-        .footer-in { padding: 24px 12px 96px; }
-        .footer-links { margin-left: 0; }
-        .footer-links a { min-height: 44px; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-        header.site { transition: none; }
-        .cart-fab.bump { animation: none; }
-        .drawer, .backdrop, .toast { transition: none; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="site">
-      <div class="header-in">
-        <img class="logo" src="img/logo.png" alt="Logo de ROCKET3D" width="46" height="46" />
-        <div class="brand">
-          <div class="wordmark">ROCKET<em>3D</em></div>
-          <div class="tag">Catálogo · La Plata, Buenos Aires</div>
-        </div>
-        <a class="header-wa" href="https://wa.me/5492212000510" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91A9.87 9.87 0 0 0 12.04 2m0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28"/></svg>
-          <span class="lbl">WhatsApp</span><span>221 200-0510</span>
-        </a>
+<!-- VISOR: lo que ve quien escanea el tag -->
+<section id="view" hidden>
+  <div class="tag">
+    <div class="ring"></div>
+    <div class="card">
+      <div class="top">
+        <div class="hole"></div>
+        <div class="avatar" id="v-emoji"></div>
+        <p class="hi">Hola, soy</p>
+        <h1 class="name" id="v-name"></h1>
+        <p class="lost">Me perdí. Ayudame a volver a casa.</p>
       </div>
-    </header>
-
-    <button class="ship-banner" id="shipBanner" type="button" aria-label="Abrir el carrito para simular el costo de envío">📦 En el carrito podés simular el costo de envío antes de confirmar tu pedido</button>
-
-    <main>
-      <section class="intro">
-        <h1>Productos personalizados, <em>hechos a pedido</em></h1>
-        <p>Sumá lo que te guste al carrito y pedilo por WhatsApp. <strong>El pago y la entrega se coordinan por mensaje</strong>, sin vueltas. Precios minoristas; por mayor, escribinos.</p>
-      </section>
-
-      <div class="tools">
-        <label class="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
-          <input id="search" type="search" placeholder="Buscar en el catálogo…" autocomplete="off" aria-label="Buscar productos" />
-        </label>
-        <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
-      </div>
-
-      <section class="featured" id="featured" hidden>
-        <div class="section-head">
-          <h2>★ <em>Destacados</em> de la semana</h2>
+      <div class="body">
+        <p class="fam" id="v-owner"></p>
+        <div class="btns">
+          <a class="btn main" id="v-call"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span id="v-call-t"></span><small id="v-call-n"></small></a>
+          <a class="btn" id="v-call2" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Llamar al otro número<small id="v-call2-n"></small></a>
+          <a class="btn wa" id="v-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l1.9-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg>Escribir por WhatsApp</a>
+          <button class="btn" id="v-loc" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Avisar dónde estoy</button>
         </div>
-        <div class="grid" id="featuredGrid"></div>
-      </section>
-
-      <div class="section-head all-head">
-        <h2>Todo el catálogo</h2>
-      </div>
-      <section class="grid" id="grid" aria-live="polite"></section>
-    </main>
-
-    <footer class="site">
-      <div class="footer-in">
-        <img src="img/logo.png" alt="" width="52" height="52" />
-        <div>
-          <div class="f-brand">ROCKET<em>3D</em></div>
-          <p>Diseño y producción propia en La Plata. Todo se hace a pedido.<br />Precios en pesos argentinos.</p>
-        </div>
-        <div class="footer-links">
-          <a href="https://www.instagram.com/r0cket3d" target="_blank" rel="noopener" aria-label="Instagram de ROCKET3D">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor" stroke="none"/></svg>
-            <span>Instagram&nbsp;<strong>@r0cket3d</strong></span>
-          </a>
-          <a href="https://wa.me/5492212000510" target="_blank" rel="noopener" aria-label="WhatsApp de ROCKET3D">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91A9.87 9.87 0 0 0 12.04 2m0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28"/></svg>
-            <span>WhatsApp&nbsp;<strong>221 200-0510</strong></span>
-          </a>
-        </div>
-      </div>
-    </footer>
-
-    <button class="cart-fab" id="cartFab" type="button" aria-label="Abrir el carrito">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M2.5 3h2l2.6 12.5a2 2 0 0 0 2 1.5h8.7a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
-      <span id="fabTotal">$ 0</span>
-      <span class="count" id="fabCount">0</span>
-    </button>
-
-    <div class="backdrop" id="backdrop"></div>
-    <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Tu pedido" hidden>
-      <header>
-        <h2>Tu pedido</h2>
-        <button class="close" id="closeDrawer" type="button" aria-label="Cerrar el carrito">✕</button>
-      </header>
-      <div class="lines" id="cartLines"></div>
-      <footer>
-        <div class="ship-calc" id="shipCalc" hidden>
-          <h3>Calculá tu envío <span>PAQ.AR · Correo Argentino</span></h3>
-          <label class="ship-field-label" for="shipDestino">Destino</label>
-          <select class="ship-select" id="shipDestino" aria-label="Elegí tu destino"></select>
-          <div class="ship-special" id="shipSpecial" hidden></div>
-          <div class="ship-services" id="shipServices" hidden>
-            <span class="ship-field-label" id="shipSvcLabel">Servicio</span>
-            <div class="ship-svc-list" id="shipSvcList" role="radiogroup" aria-labelledby="shipSvcLabel"></div>
-          </div>
-          <p class="ship-hint" id="shipHint">Elegí tu destino para ver el costo de envío al instante: se suma solo al total de tu pedido.</p>
-          <p class="ship-note">Precios calculados para la caja estándar de 25 × 15 × 8 cm y hasta 1 kg. Si tu pedido requiere una caja mayor, confirmamos el costo de envío antes de cerrar la compra.</p>
-        </div>
-        <div class="sub-row">
-          <span class="s-label">Subtotal de productos</span>
-          <span class="s-value" id="cartSubtotal">$ 0</span>
-        </div>
-        <div class="sub-row">
-          <span class="s-label">Envío</span>
-          <span class="s-value pending" id="cartShipping">A coordinar</span>
-        </div>
-        <div class="total-row">
-          <span class="t-label">Total</span>
-          <span class="t-value" id="cartTotal">$ 0</span>
-        </div>
-        <div class="pay-block" id="payBlock" hidden>
-          <h3>Seña para confirmar tu pedido <span>Transferencia · 50% de los productos</span></h3>
-          <div class="pay-data">
-            <div class="pay-line"><span class="k">Alias</span><span class="pay-alias-row"><span class="v" id="payAlias">Rocket3D.mp</span><button type="button" class="copy-alias" id="copyAlias">Copiar alias</button></span></div>
-            <div class="pay-line"><span class="k">A nombre de</span><span class="v">Gino Patronelli</span></div>
-            <div class="pay-line"><span class="k">DNI</span><span class="v">33444198</span></div>
-          </div>
-          <div class="pay-amounts">
-            <div class="pay-amt main"><span class="k">Seña (50% de los productos)</span><span class="v" id="paySena">$ 0</span></div>
-            <div class="pay-amt"><span class="k">Saldo de productos</span><span class="v" id="paySaldo">$ 0</span></div>
-            <div class="pay-amt"><span class="k">Envío</span><span class="v">Aproximado · se cobra aparte</span></div>
-          </div>
-          <p class="pay-note">La seña se calcula <strong>solo sobre el total de los productos</strong>, sin incluir el envío. El precio del envío es <strong>aproximado y se cobra aparte</strong>. Cuando hagas la transferencia, <strong>enviá el comprobante por WhatsApp</strong> junto con tu pedido para confirmarlo.</p>
-        </div>
-        <p class="note" id="cartNote">El pago y la entrega se coordinan por WhatsApp. Al tocar el botón se abre WhatsApp con tu pedido ya armado.</p>
-        <a class="wa-order disabled" id="waOrder" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91A9.87 9.87 0 0 0 12.04 2m0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.13-1.47-.72-1.69-.8-.23-.09-.39-.13-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28"/></svg>
-          <span id="waOrderLabel">Pedir por WhatsApp</span>
-        </a>
-        <button class="clear-cart" id="clearCart" type="button">Vaciar el carrito</button>
-      </footer>
-    </aside>
-
-    <div class="detail" id="detail" role="dialog" aria-modal="true" aria-label="Detalle del producto" hidden>
-      <div class="detail-in">
-        <div class="detail-top">
-          <button class="back-btn" id="detailBack" type="button">← Volver al catálogo</button>
-          <button class="detail-close" id="detailClose" type="button" aria-label="Cerrar el detalle">✕</button>
-        </div>
-        <div class="detail-body">
-          <div class="detail-media">
-            <div class="d-stage-wrap">
-              <div class="d-stage" id="detailStage"></div>
-              <span class="d-count" id="detailCount" hidden></span>
-              <button type="button" class="d-expand" id="detailExpand" aria-label="Ver en pantalla completa">⤢</button>
-            </div>
-            <div class="d-thumbs" id="detailThumbs"></div>
-            <p class="d-hint">Recorré la galería completa con las miniaturas. Tocá la imagen para verla en pantalla completa: zoom con la rueda del mouse o pellizcando con los dedos. Si el producto tiene video, tocá el botón de sonido —el círculo con el parlante, abajo a la derecha del video— para escucharlo con audio.</p>
-          </div>
-          <div class="detail-info">
-            <span class="d-cat" id="detailCat"></span>
-            <p class="d-star" id="detailStar" hidden>★ Destacado de la semana</p>
-            <h2 id="detailName"></h2>
-            <p class="d-desc" id="detailDesc"></p>
-            <div class="buy-row" id="detailBuy"></div>
-            <p class="d-note">Todo se hace a pedido: sumalo al carrito y coordinamos colores, personalización, pago y entrega por WhatsApp.</p>
-          </div>
+        <div class="note" id="v-note-box" hidden><b>Tenelo en cuenta</b><p id="v-note"></p></div>
+        <div class="help">
+          <h2>Cómo ayudarme</h2>
+          <ol>
+          <li>Llamá o escribí a mi familia: están muy preocupados.</li>
+          <li>Con el botón de ubicación les avisás dónde estoy.</li>
+          <li>Quedate conmigo hasta que lleguen a buscarme.</li>
+          </ol>
         </div>
       </div>
     </div>
+  </div>
+  <p class="foot"><a id="v-edit" href="#">Crear o editar este tag</a></p>
+</section>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista en pantalla completa" hidden>
-      <div class="lb-stage" id="lbStage"></div>
-      <button type="button" class="lb-close" id="lbClose" aria-label="Cerrar pantalla completa">✕</button>
-      <button type="button" class="lb-nav prev" id="lbPrev" aria-label="Anterior">‹</button>
-      <button type="button" class="lb-nav next" id="lbNext" aria-label="Siguiente">›</button>
-      <div class="lb-bar">
-        <button type="button" class="lb-zbtn" id="lbZoomOut" aria-label="Alejar">−</button>
-        <span class="lb-count" id="lbCount"></span>
-        <button type="button" class="lb-zbtn" id="lbZoomIn" aria-label="Acercar">+</button>
-        <button type="button" class="lb-zbtn txt" id="lbZoomReset" aria-label="Restablecer zoom">1:1</button>
-      </div>
+<!-- GENERADOR: lo que usa el dueño para armar el link -->
+<section id="gen" hidden>
+  <h1>Datos de tu mascota</h1>
+  <p class="lead">Completá el formulario y copiá el link que se genera. Ese link es el que vas a grabar en el tag.</p>
+
+  <div class="row">
+    <div><label for="f-name">Nombre de la mascota</label><input id="f-name" maxlength="30" autocomplete="off"></div>
+    <div><label for="f-sp">Es un</label>
+      <select id="f-sp"><option value="p">Perro</option><option value="g">Gato</option><option value="o">Otro</option></select></div>
+  </div>
+  <label for="f-owner">Nombre del dueño o dueña</label>
+  <input id="f-owner" maxlength="30" autocomplete="off">
+  <label for="f-t1">Teléfono principal <span class="hint">con código de país, ej: +54 9 221 555 1234</span></label>
+  <input id="f-t1" type="tel" maxlength="20" inputmode="tel">
+  <label for="f-t2">Teléfono alternativo <span class="hint">opcional</span></label>
+  <input id="f-t2" type="tel" maxlength="20" inputmode="tel">
+  <label for="f-note">Aviso importante <span class="hint">opcional, ej: toma medicación, es muy tímido</span></label>
+  <textarea id="f-note" maxlength="140"></textarea>
+  <label id="f-color-l">Color de la chapa</label>
+  <div class="sw" id="f-color" role="radiogroup" aria-labelledby="f-color-l"></div>
+
+  <div class="out">
+    <label>Tu link</label>
+    <div class="link" id="link" aria-live="polite"></div>
+    <div class="meter" id="meter"><i></i></div>
+    <div class="size" id="size"></div>
+    <div class="two">
+      <button class="btn main" id="copy" type="button">Copiar link</button>
+      <button class="btn" id="test" type="button">Ver cómo se ve</button>
     </div>
+  </div>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <h2 style="margin-top:32px">Cómo grabarlo en el tag</h2>
+  <ol>
+    <li>Instalá la app gratuita <b>NFC Tools</b> (Android o iPhone).</li>
+    <li>Entrá en <b>Escribir</b>, después <b>Agregar un registro</b> y elegí <b>URL / URI</b>.</li>
+    <li>Pegá el link copiado y tocá <b>Aceptar</b>.</li>
+    <li>Tocá <b>Escribir</b> y acercá el celular al tag hasta que confirme.</li>
+    <li>Probalo: acercá otro celular al tag y tiene que abrirse esta página con los datos.</li>
+  </ol>
+</section>
 
-    <script>
-      "use strict";
-      /* =====================================================================
-         CATÁLOGO ROCKET3D — LISTA DE PRODUCTOS
-         Para actualizar el catálogo se edita SOLO este listado:
-         · Agregar un producto: copiar una línea y cambiar los datos.
-         · nombre:     nombre que ve el cliente.
-         · precio:     precio minorista en pesos (sin puntos ni comas).
-                       Usar null si todavía no tiene precio: la tarjeta
-                       muestra «Precio a consultar».
-         · categoria:  una de CATEGORIAS (definidas más abajo).
-         · descripcion: texto corto de la tarjeta.
-         · foto:       ruta de la imagen en assets/ (o "" si no tiene).
-         · video:      ruta del video mp4 en assets/ (o "" si no tiene).
-                       El video NUNCA es portada: la tarjeta siempre
-                       muestra la foto (la imagen más descriptiva del
-                       producto) y el video se ve en la galería del
-                       detalle, al final.
-         · poster:     imagen previa del video (opcional).
-         · desde:      true si el precio es «desde» (el producto tiene
-                       presentaciones con distinto precio, detalladas
-                       en la descripción).
-         · destacado:  true si es «Destacado de la semana»: aparece en la
-                       sección de destacados al principio de la página y
-                       primero en la grilla general.
-         · galeria:    lista opcional de ítems extra del producto, p. ej.
-                       galeria: ["assets/foto2.jpg", "assets/foto3.jpg"].
-                       Se suman a la foto principal (y al video, si hay)
-                       en la galería de la vista de detalle. También puede
-                       incluir videos con la forma
-                       { video: "assets/video.mp4", poster: "assets/video.jpg" }.
-                       REELS_RETRO (definida justo arriba de PRODUCTOS) trae
-                       los dos reels de la línea retro que comparten los
-                       cuadros gamer: se agregan con ...REELS_RETRO.
-         Los datos (nombres, precios, descripciones, categorías y fotos)
-         salen del catálogo anterior de ROCKET3D en AreaMaker
-         (actualizados al 23/10/2026). «antes» es el precio anterior:
-         se muestra tachado junto al precio actual.
-         ===================================================================== */
-      /* Reels promocionales de la línea de cuadros retro: van en la
-         galería de cada cuadro gamer, después de sus fotos. */
-      const REELS_RETRO = [
-        { video: "img/v0003.mp4", poster: "img/m0004.jpg" },
-        { video: "img/v0005.mp4", poster: "img/m0006.jpg" }
-      ];
+</main>
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const LIMIT = 504;
+const EMOJI = {p: "🐶", g: "🐱", o: "🐾"};
+const COLORS = ["#d6432b", "#1f5fd1", "#14855a", "#7a3fc4", "#c2185b", "#0f766e"];
 
-      const PRODUCTOS = [
-        // ---- Letras Corpóreas ----
-        { id: "inicial-led", nombre: "Inicial Corporea con Nombre LED", precio: 40000, categoria: "corporeas",
-          descripcion: "Medidas: 20 × 23 × 6 cm (23 cm de alto). Inicial y nombre personalizados con iluminación LED de bajo consumo. Incluye fuente de alimentación, lista para enchufar. Elegí la inicial, el nombre, los colores y el adorno decorativo (mariposas, estrellas, globos, flores y mucho más). Ideal para habitaciones infantiles, cumpleaños y nacimientos.",
-          foto: "img/m0007.jpg", video: "img/v0008.mp4", poster: "img/m0007.jpg",
-          galeria: ["img/m0010.jpg", "img/m0011.jpg", "img/m0012.jpg", "img/m0013.jpg"] },
-        { id: "inicial", nombre: "Inicial Corporea con Nombre", precio: 20000, categoria: "corporeas",
-          descripcion: "Medidas: 17 × 20 × 4 cm. Inicial personalizada con nombre, colores a elección. Ideal para cumpleaños, nacimiento, baby shower o decoración infantil. Cada pieza se realiza a pedido.",
-          foto: "img/m0014.jpg", video: "", poster: "",
-          galeria: ["img/m0015.jpg", "img/m0016.jpg"] },
+// Los datos viajan en el link: JSON compacto, en UTF-8, codificado en base64 seguro para URL.
+const enc = a => {
+  let s = "";
+  new TextEncoder().encode(JSON.stringify(a)).forEach(c => s += String.fromCharCode(c));
+  return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+};
+const dec = t => {
+  t = t.replace(/-/g, "+").replace(/_/g, "/");
+  while (t.length % 4) t += "=";
+  return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(t), c => c.charCodeAt(0))));
+};
+const base = () => location.href.split("#")[0];
+// Estimación de bytes que ocupa el link como registro NDEF en el tag.
+const tagBytes = u => {
+  const p = u.replace(/^https:\/\//, "").length + 1, r = p + (p < 256 ? 4 : 7);
+  return r + (r < 255 ? 3 : 5);
+};
+const digits = s => String(s).replace(/\D/g, "");
+const tel = s => String(s).replace(/[^\d+]/g, "");
 
-        // ---- Cuadros ----
-        { id: "cuadro-messi", nombre: "Cuadro Messi Argentina", precio: 20000, antes: 25000, categoria: "cuadros",
-          descripcion: "Medidas: 14 × 22 cm. Cuadro en relieve homenaje a la camiseta número 10 con la firma de Leo. Una pieza de colección para tu escritorio, repisa o espacio futbolero.",
-          foto: "img/m0017.jpg", video: "", poster: "" },
-        { id: "pacman-grande", nombre: "Cuadro Retro Pac-Man Grande", precio: 18000, categoria: "cuadros",
-          descripcion: "Medidas: 22 × 20 cm. Cuadro en relieve.",
-          foto: "img/m0018.jpg", video: "", poster: "",
-          galeria: ["img/m0019.jpg", ...REELS_RETRO] },
-        { id: "pacman-chico", nombre: "Cuadro Retro Pac-Man Chico", precio: 12000, categoria: "cuadros",
-          descripcion: "Medidas: 15 × 14 cm. Cuadro en relieve.",
-          foto: "img/m0019.jpg", video: "", poster: "",
-          galeria: [...REELS_RETRO] },
-        { id: "street-fighters", nombre: "Cuadro Retro Street Fighters", precio: 18000, categoria: "cuadros",
-          descripcion: "Medidas: 25 × 18 cm. Cuadro en relieve.",
-          foto: "img/m0021.jpg", video: "", poster: "",
-          galeria: ["img/m0022.jpg", "img/m0023.jpg", "img/m0024.jpg", ...REELS_RETRO] },
-        { id: "metal-slug", nombre: "Cuadro Retro Metal Slug", precio: 18000, categoria: "cuadros",
-          descripcion: "Medidas: 25 × 18 cm. Cuadro en relieve.",
-          foto: "img/m0025.jpg", video: "", poster: "",
-          galeria: ["img/m0026.jpg", "img/m0027.jpg", "img/m0028.jpg", ...REELS_RETRO] },
-        { id: "mortal-kombat", nombre: "Cuadro Retro Mortal Kombat", precio: 18000, categoria: "cuadros",
-          descripcion: "Medidas: 22 × 17 cm. Cuadro en relieve.",
-          foto: "img/m0029.jpg", video: "", poster: "",
-          galeria: [...REELS_RETRO] },
-        { id: "mario", nombre: "Cuadro Retro Super Mario Bross", precio: 18000, categoria: "cuadros",
-          descripcion: "Medidas: 22 × 22 cm. Cuadro en relieve.",
-          foto: "img/m0030.jpg", video: "", poster: "",
-          galeria: [...REELS_RETRO] },
-        { id: "duck-hunt", nombre: "Cuadro Retro Duck Hunt", precio: 14000, categoria: "cuadros",
-          descripcion: "Medidas: 22 × 14 cm. Cuadro en relieve.",
-          foto: "img/m0031.jpg", video: "", poster: "",
-          galeria: [...REELS_RETRO] },
-        { id: "donkey-kong", nombre: "Cuadro Retro Donkey Kong", precio: 14000, categoria: "cuadros",
-          descripcion: "Medidas: 17 × 15 cm. Cuadro en relieve.",
-          foto: "img/m0032.jpg", video: "", poster: "",
-          galeria: [...REELS_RETRO] },
-        { id: "space-invaders", nombre: "Cuadro Retro Space Invaders", precio: 18000, categoria: "cuadros",
-          descripcion: "Medidas: 17 × 14 cm. Cuadro en relieve.",
-          foto: "img/m0033.jpg", video: "", poster: "",
-          galeria: ["img/m0034.jpg", "img/m0035.jpg", ...REELS_RETRO] },
-        { id: "batman", nombre: "Cuadro Batman", precio: 14000, categoria: "cuadros",
-          descripcion: "Medidas: 13 × 22 cm. Cuadro en relieve.",
-          foto: "img/m0036.jpg", video: "", poster: "",
-          galeria: [...REELS_RETRO] },
+function route() {
+  const m = location.hash.match(/^#([de])=([\w-]+)$/);
+  let data = null;
+  if (m) { try { data = dec(m[2]); if (!Array.isArray(data)) data = null; } catch (e) { data = null; } }
+  $("#view").hidden = !(m && m[1] === "d" && data);
+  $("#gen").hidden = !$("#view").hidden;
+  document.body.classList.toggle("view", !$("#view").hidden);
+  if (!$("#view").hidden) showView(data, m[2]); else showGen(m && m[1] === "e" ? data : null);
+  window.scrollTo(0, 0);
+}
 
-        // ---- Figuras (pintadas a mano, precio a consultar) ----
-        { id: "figura-xenomorfo", nombre: "Figura Xenomorfo — Alien", precio: null, categoria: "figuras",
-          descripcion: "Figura de colección del Xenomorfo sobre base escénica con huevo, pintada a mano con acabado metálico. Pieza de exhibición para fans de la saga.",
-          foto: "img/m0037.jpg", video: "", poster: "" },
-        { id: "figura-goku", nombre: "Figura Goku Super Saiyajin", precio: null, categoria: "figuras",
-          descripcion: "Figura de Goku en su transformación Super Saiyajin, versión batalla, sobre base de roca. Pintada a mano con detalles de daño y desgaste.",
-          foto: "img/m0038.jpg", video: "img/v0039.mp4", poster: "img/m0040.jpg",
-          galeria: ["img/m0041.jpg", "img/m0042.jpg", "img/m0043.jpg", "img/m0044.jpg", "img/m0045.jpg"] },
-        { id: "figura-gohan", nombre: "Figura Gohan Super Saiyajin 2", precio: null, categoria: "figuras",
-          descripcion: "Figura de Gohan Super Saiyajin 2 con aura de rayos, sobre base de escombros. Pintada a mano con detalles de batalla.",
-          foto: "img/m0046.jpg", video: "img/v0047.mp4", poster: "img/m0048.jpg",
-          galeria: ["img/m0049.jpg", "img/m0050.jpg", "img/m0051.jpg", "img/m0052.jpg", "img/m0053.jpg", "img/m0054.jpg"] },
+function showView(d, raw) {
+  const [name = "", sp = "o", owner = "", t1 = "", t2 = "", note = "", ci = "0"] = d.map(x => String(x));
+  const first = owner.split(" ")[0];
+  document.title = name ? name + " se perdió" : "Mascota encontrada";
+  $("#view").style.setProperty("--ac", COLORS[+ci] || COLORS[0]);
+  $("#v-emoji").textContent = EMOJI[sp] || EMOJI.o;
+  $("#v-name").textContent = name || "una mascota";
+  $("#v-owner").textContent = owner ? "Mi familia: " + owner : "";
+  $("#v-owner").hidden = !owner;
+  $("#v-call-t").textContent = "Llamar a " + (first || "mi familia");
+  $("#v-call-n").textContent = t1;
+  $("#v-call").href = "tel:" + tel(t1);
+  $("#v-call2").hidden = !t2;
+  $("#v-call2-n").textContent = t2;
+  $("#v-call2").href = "tel:" + tel(t2);
+  const wa = "https://wa.me/" + digits(t1);
+  const msg = "Hola, encontré a " + (name || "tu mascota") + ".";
+  $("#v-wa").href = wa + "?text=" + encodeURIComponent(msg);
+  $("#v-note-box").hidden = !note;
+  $("#v-note").textContent = note;
+  $("#v-edit").href = "#e=" + raw;
+  $("#v-loc").onclick = () => {
+    const go = t => window.open(wa + "?text=" + encodeURIComponent(t), "_blank");
+    if (!navigator.geolocation) return go(msg);
+    navigator.geolocation.getCurrentPosition(
+      p => go(msg + " Estoy acá: https://maps.google.com/?q=" + p.coords.latitude + "," + p.coords.longitude),
+      () => go(msg), {timeout: 8000});
+  };
+}
 
-        // ---- Lámparas ----
-        { id: "lampara-lunar", nombre: "Lámpara Lunar", precio: 35000, categoria: "lamparas",
-          descripcion: "Medidas: 18 × 18 cm. Lámpara con textura que recrea los cráteres y relieves de la Luna. Luz LED blanco cálido con brillo regulable y base de soporte integrada. Ideal para mesas de luz, escritorios o estantes.",
-          foto: "img/m0055.jpg", video: "img/v0056.mp4", poster: "img/m0057.jpg",
-          galeria: ["img/m0058.jpg", "img/m0059.jpg"] },
-        { id: "lampara-espiral", nombre: "Lámpara Espiral", precio: 32000, categoria: "lamparas",
-          descripcion: "Medidas: 16 × 22 cm. Pieza de decoración con luz cálida. Incluye lámpara LED E14, lista para usar. Disponible en diferentes colores.",
-          foto: "img/m0060.jpg", video: "", poster: "",
-          galeria: ["img/m0061.jpg"] },
-        { id: "lampara-tripode", nombre: "Lámpara Trípode Grande", precio: 34000, categoria: "lamparas",
-          descripcion: "Medidas: 25 × 40 cm. Pieza de decoración con luz cálida. Incluye lámpara LED E27, lista para usar. Disponible en diferentes colores.",
-          foto: "img/m0062.jpg", video: "", poster: "",
-          galeria: ["img/m0063.jpg", "img/m0064.jpg"] },
+const F = ["#f-name", "#f-sp", "#f-owner", "#f-t1", "#f-t2", "#f-note"];
+$("#f-color").innerHTML = COLORS.map((c, i) => `<label><input type="radio" name="c" value="${i}"${i ? "" : " checked"} aria-label="Color ${i + 1}"><span style="background:${c}"></span></label>`).join("");
+function values() {
+  const c = document.querySelector("input[name=c]:checked");
+  return [...F.map(s => $(s).value.trim()), c ? +c.value : 0];
+}
 
-        // ---- Sensoriales ----
-        { id: "tetris-sin-caja", nombre: "Tetris Equilibrio (Sin Caja)", precio: 28000, categoria: "sensoriales",
-          descripcion: "Juego de mesa de equilibrio: tirá el dado, colocá las piezas y tratá de no derribar la torre. Para jugar en familia o con amigos. Versión clásica sin caja.",
-          foto: "img/m0065.jpg", video: "img/v0066.mp4", poster: "img/m0067.jpg" },
-        { id: "tetris-con-caja", nombre: "Tetris Equilibrio (Con Caja Transportadora)", precio: 40000, categoria: "sensoriales",
-          descripcion: "Juego de mesa de equilibrio: tirá el dado, colocá las piezas y tratá de no derribar la torre. Incluye caja transportadora para llevarlo a donde quieras.",
-          foto: "img/m0065.jpg", video: "img/v0066.mp4", poster: "img/m0067.jpg",
-          galeria: ["img/m0071.jpg", "img/m0072.jpg"] },
-        { id: "comidas", nombre: "Comidas Sensoriales x3", precio: 12000, categoria: "sensoriales",
-          descripcion: "Pack x3 de comiditas sensoriales articuladas que se abren, se estiran y se mueven: tomate, huevo frito y pata de pollo. Para jugar, estimular los sentidos o decorar el escritorio. También disponible el set completo x6, que suma choclo, zanahoria y brócoli, a $ 22.000, en bolsa con sticker de ROCKET3D.",
-          foto: "img/m0073.jpg", video: "img/v0074.mp4", poster: "img/m0075.jpg",
-          galeria: ["img/m0076.jpg", "img/m0077.jpg", "img/m0078.jpg", "img/m0079.jpg", "img/m0080.jpg", "img/m0081.jpg", "img/m0082.jpg"] },
-        { id: "manzana-montessori", nombre: "Manzana Montessori", precio: 12000, categoria: "sensoriales",
-          descripcion: "Juego Montessori de encastre y motricidad: la manzana se arma apilando discos sobre la base con clavijas, trabajando conteo, orden y coordinación. Ideal para los más chicos.",
-          foto: "img/m0083.jpg", video: "", poster: "" },
-        // ---- Gyros ----
-        { id: "gyro-mano", nombre: "Gyro + Launcher de Mano", precio: 4000, categoria: "gyros",
-          descripcion: "Gyro con lanzador de mano y cremallera: tirás y a girar. Ideal para batallas con amigos.",
-          foto: "img/m0084.jpg", video: "", poster: "" },
-        { id: "gyro-alto", nombre: "Gyro + Launcher Alto", precio: 7000, categoria: "gyros",
-          descripcion: "Gyro con lanzador alto de mayor potencia para lanzamientos con más fuerza y velocidad.",
-          foto: "img/m0085.jpg", video: "", poster: "",
-          galeria: ["img/m0086.jpg"] },
-        { id: "gyro-elastico", nombre: "Gyro + Launcher Elástico", precio: 7000, categoria: "gyros",
-          descripcion: "Gyro con lanzador elástico tipo pinza: lanzamiento rápido y preciso.",
-          foto: "img/m0087.jpg", video: "", poster: "" },
-        { id: "campo-batalla", nombre: "Campo de Batalla Gyro Big", precio: 14000, categoria: "gyros",
-          descripcion: "Arena de batalla Drop Out para duelos de gyros: el que sale de la arena, pierde. Para jugar de a 2 o más.",
-          foto: "img/m0088.jpg", video: "", poster: "",
-          galeria: ["img/m0089.jpg",
-            { video: "img/v0090.mp4", poster: "img/m0091.jpg" },
-            { video: "img/v0092.mp4", poster: "img/m0093.jpg" }] },
-        { id: "gyro-combo", nombre: "Combo Campo + 2 Gyros Simples", precio: 18000, categoria: "gyros",
-          descripcion: "El kit completo para batallar: arena de batalla + 2 gyros con sus lanzadores. Listo para jugar.",
-          foto: "img/m0094.jpg", video: "img/v0095.mp4", poster: "img/m0096.jpg" },
+function showGen(d) {
+  document.title = "Crear tag de mascota";
+  if (d) {
+    F.forEach((s, i) => { $(s).value = d[i] == null ? "" : d[i]; });
+    const r = document.querySelector('input[name=c][value="' + (+d[6] || 0) + '"]');
+    if (r) r.checked = true;
+  }
+  update();
+}
 
-        // ---- Llaveros ----
-        { id: "llaveros", nombre: "Llaveros Personalizados", precio: 1500, categoria: "llaveros",
-          descripcion: "Llaveros con nombre totalmente personalizado: colores y tipografías a elección, incluyen argolla. Livianos y resistentes, ideales para souvenirs, cumpleaños y regalos. Consultar por precio mayorista. En el detalle del producto podés ver el video.",
-          foto: "img/m0097.jpg", video: "img/v0098.mp4", poster: "img/m0099.jpg",
-          galeria: ["img/m0100.jpg", "img/m0101.jpg", "img/m0102.jpg", "img/m0103.jpg"] },
-        { id: "clickers-charms", nombre: "Clickers Charms", precio: 5000, categoria: "llaveros",
-          descripcion: "Charm clicker antiestrés para llaves, mochilas o bolsos. Sonido y tacto ultra satisfactorios, diseño portátil.",
-          foto: "img/m0104.jpg", video: "", poster: "" },
+function update() {
+  const v = values(), ok = v[0] && v[3];
+  const link = ok ? base() + "#d=" + enc(v) : "";
+  $("#link").textContent = link || "Completá el nombre y el teléfono principal para ver tu link.";
+  $("#copy").disabled = $("#test").disabled = !ok;
+  const n = link ? tagBytes(link) : 0, bad = n > LIMIT - 14;
+  $("#meter i").style.width = Math.min(100, n / LIMIT * 100) + "%";
+  $("#meter").classList.toggle("bad", bad);
+  $("#size").classList.toggle("bad", bad);
+  $("#size").textContent = !link ? "" : bad
+    ? "Ocupa unos " + n + " de " + LIMIT + " bytes: no entra bien en el tag. Acortá el aviso o los nombres."
+    : "Ocupa unos " + n + " de " + LIMIT + " bytes del tag. Entra bien.";
+}
 
-        // ---- Mates ----
-        { id: "mate-messi", nombre: "Mate Messi Goat", precio: 14000, categoria: "mates",
-          descripcion: "Mate inspirado en el botín de Messi, ideal para vivir cada partido alentando a la Scaloneta. El regalo perfecto para cualquier fan.",
-          foto: "img/m0105.jpg", video: "img/v0106.mp4", poster: "img/m0107.jpg",
-          galeria: ["img/m0108.jpg", "img/m0109.jpg", "img/m0110.jpg"] },
-        { id: "mate-f1", nombre: "Mate F1 Colapinto", precio: 15000, categoria: "mates",
-          descripcion: "Mate estilo neumático con etiquetas intercambiables: personalizalo con nombre, logo o diseño y cambiá el estilo cuando quieras.",
-          foto: "img/m0111.jpg", video: "", poster: "",
-          galeria: ["img/m0112.jpg", "img/m0113.jpg", "img/m0114.jpg"] },
-
-        // ---- Mascotas ----
-        { id: "comedero-pequeno", nombre: "Comedero Mascotas Pequeñas", precio: 15000, categoria: "mascotas",
-          descripcion: "Medidas: 15 × 6 × 15 cm. Comedero personalizado con el nombre de tu mascota. Incluye recipiente interno de acero inoxidable desmontable, fácil de lavar, apto para alimento o agua. Base firme con acabado moderno.",
-          foto: "img/m0115.jpg", video: "img/v0116.mp4", poster: "img/m0117.jpg",
-          galeria: ["img/m0118.jpg", "img/m0119.jpg", "img/m0120.jpg"] },
-        { id: "comedero-grande", nombre: "Comedero Mascotas Medianas/Grandes", precio: 32000, categoria: "mascotas",
-          descripcion: "Medidas: 23 × 8 cm. Comedero personalizado con el nombre de tu mascota. Incluye recipiente interno de acero inoxidable desmontable, fácil de lavar, apto para alimento o agua. Base firme con acabado moderno.",
-          foto: "img/m0121.jpg", video: "", poster: "" },
-        { id: "chapita-nfc", nombre: "Chapita NFC para Mascotas", precio: 10000, categoria: "mascotas", destacado: true,
-          descripcion: "Si tu mascota se pierde, que te encuentren en segundos. Quien la encuentra apoya su celular sobre la chapita y la ficha se abre al instante: nombre, botones para llamarte o escribirte por WhatsApp, aviso de dónde está y datos importantes como medicación o cuidados especiales. Sin apps para quien la encuentra, sin mensualidades y sin crear cuentas. Es regrabable: si cambiás tus datos, la chapita se actualiza. Compatible con cualquier celular con NFC. Incluye tarjeta con instructivo en QR para activarla en minutos y se entrega con los datos de tu mascota ya grabados.",
-          foto: "img/m0122.jpg", video: "", poster: "",
-          galeria: ["img/m0123.jpg", "img/m0124.jpg", "img/m0125.jpg", "img/m0126.jpg", "img/m0127.jpg"] },
-
-        // ---- Halloween ----
-        { id: "canastitas", nombre: "Canastitas Temáticas Halloween", precio: 3500, categoria: "halloween",
-          descripcion: "Canastitas caladas para golosinas, souvenirs o mesa dulce. Diseños: calabaza, fantasmitas, calaveras, Frankenstein y murciélagos. Livianas, resistentes, reutilizables y con agarre superior para llevar o colgar.",
-          foto: "img/m0128.jpg", video: "", poster: "",
-          galeria: ["img/m0129.jpg", "img/m0130.jpg", "img/m0131.jpg", "img/m0132.jpg", "img/m0133.jpg", "img/m0134.jpg"] },
-
-        // ---- Bebés ----
-        { id: "nacimiento", nombre: "Deco Nacimiento Personalizada", precio: 9000, categoria: "bebes",
-          descripcion: "Medidas: 12 × 17,5 × 2 cm. Globo aerostático personalizado con los datos del bebé: nombre, hora de nacimiento, peso, medida y fecha. Colores suaves a elección. Ideal para regalos de nacimiento, baby showers o decoración infantil.",
-          foto: "img/m0135.jpg", video: "", poster: "",
-          galeria: ["img/m0136.jpg"] },
-
-        // ---- Placas para Colorear ----
-        { id: "plaquitas", nombre: "Plaquitas para Colorear Reutilizables", precio: 5000, categoria: "placas",
-          descripcion: "Pack de 3 placas a elección entre muchísimas temáticas (K-Pop, Bluey, Pokémon, unicornios, dinosaurios y más). Se pintan con marcadores lavables, se lavan con agua y se reutilizan una y otra vez.",
-          foto: "img/m0137.jpg", video: "img/v0138.mp4", poster: "img/m0139.jpg",
-          galeria: ["img/m0140.jpg"] },
-
-        // ---- DecoHome ----
-        { id: "jarrones", nombre: "Set Jarrones Nórdicos Toroidales", precio: 18000, categoria: "decohome",
-          descripcion: "Set de jarrones de diseño minimalista y contemporáneo. Ideales para flores secas, pampas o arreglos decorativos en livings, comedores, escritorios y recibidores.",
-          foto: "img/m0141.jpg", video: "img/v0142.mp4", poster: "img/m0143.jpg",
-          galeria: ["img/m0144.jpg"] },
-        { id: "calendario", nombre: "Calendario Interactivo", precio: 23000, categoria: "decohome",
-          descripcion: "Calendario perpetuo de escritorio con tarjetas flip: cambiás el día y el mes girando las tarjetas. Nunca vence, te acompaña todos los años. Colores a elección.",
-          foto: "img/m0145.jpg", video: "img/v0146.mp4", poster: "img/m0145.jpg" },
-
-        // ---- Navidad: sets individuales (uno por combinación y bandeja) ----
-        { id: "set-navideno-pesebre-clasico", nombre: "Set Navideño Pesebre Clásico — Bandeja Ovalada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja ovalada, árbol grande con estrella dorada, vela LED y la Sagrada Familia clásica. Medidas: bandeja 20 × 12 cm · árbol 15 cm de alto · Sagrada Familia 10 cm de alto. Incluye vela LED.",
-          foto: "img/m0148.jpg", video: "", poster: "" },
-        { id: "set-navideno-pesebre-tejido", nombre: "Set Navideño Pesebre Tejido — Bandeja Ovalada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja ovalada, árbol grande con estrella dorada y la Sagrada Familia estilo tejido. Medidas: bandeja 20 × 12 cm · árbol 15 cm de alto · Sagrada Familia 10 cm de alto.",
-          foto: "img/m0149.jpg", video: "", poster: "" },
-        { id: "set-navideno-papa-noel-reno-ovalada", nombre: "Set Navideño Papá Noel con Reno — Bandeja Ovalada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja ovalada, árbol grande con estrella dorada, vela LED y las figuras estilo tejido de Papá Noel y el Reno. Medidas: bandeja 20 × 12 cm · árbol 15 cm de alto. Incluye vela LED.",
-          foto: "img/m0150.jpg", video: "", poster: "" },
-        { id: "set-navideno-papa-noel-nieve", nombre: "Set Navideño Papá Noel con Muñeco de Nieve — Bandeja Ovalada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja ovalada, árbol grande con estrella dorada, vela LED y las figuras estilo tejido de Papá Noel y el Muñeco de Nieve. Medidas: bandeja 20 × 12 cm · árbol 15 cm de alto. Incluye vela LED.",
-          foto: "img/m0151.jpg", video: "", poster: "" },
-        { id: "set-navideno-papa-noel-jengibre", nombre: "Set Navideño Papá Noel con Hombre de Jengibre — Bandeja Ovalada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja ovalada, árbol grande con estrella dorada, vela LED y las figuras estilo tejido de Papá Noel y el Hombre de Jengibre. Medidas: bandeja 20 × 12 cm · árbol 15 cm de alto. Incluye vela LED.",
-          foto: "img/m0152.jpg", video: "", poster: "" },
-        { id: "set-navideno-figuras-arbolito", nombre: "Set Navideño Figuras Tejidas con Arbolito — Bandeja Alargada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja alargada y las figuras estilo tejido: arbolito, Muñeco de Nieve, Reno y Papá Noel. Medidas: bandeja 23 × 9,5 cm · árbol tejido 8,5 cm de alto.",
-          foto: "img/m0153.jpg", video: "", poster: "" },
-        { id: "set-navideno-figuras-tejidas", nombre: "Set Navideño Figuras Tejidas — Bandeja Alargada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja alargada y las figuras estilo tejido: Hombre de Jengibre, Muñeco de Nieve, Reno y Papá Noel. Medidas: bandeja 23 × 9,5 cm.",
-          foto: "img/m0154.jpg", video: "", poster: "" },
-        { id: "set-navideno-papa-noel-reno-arbolito", nombre: "Set Navideño Papá Noel y Reno con Arbolito Tejido — Bandeja Alargada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja alargada, arbolito tejido con estrella dorada, vela LED y las figuras estilo tejido de Papá Noel y el Reno. Medidas: bandeja 23 × 9,5 cm · árbol tejido 8,5 cm de alto. Incluye vela LED.",
-          foto: "img/m0155.jpg", video: "", poster: "" },
-        { id: "set-navideno-papa-noel-reno-alargada", nombre: "Set Navideño Papá Noel con Reno — Bandeja Alargada", precio: 18000, categoria: "navidad", destacado: true,
-          descripcion: "Centro de mesa navideño con bandeja alargada, árbol grande con estrella dorada, vela LED y las figuras estilo tejido de Papá Noel y el Reno. Medidas: bandeja 23 × 9,5 cm · árbol 15 cm de alto. Incluye vela LED.",
-          foto: "img/m0156.jpg", video: "", poster: "" },
-
-        // ---- Navidad: amigurumis individuales ----
-        { id: "amigurumi-muneco-nieve", nombre: "Amigurumi Muñeco de Nieve", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido del Muñeco de Nieve, con gorro y bufanda rojos. Medida: 7 cm de alto aprox.",
-          foto: "img/m0157.jpg", video: "", poster: "" },
-        { id: "amigurumi-reno", nombre: "Amigurumi Reno", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido del Reno, con cuernos y nariz roja. Medida: 7 cm de alto aprox.",
-          foto: "img/m0158.jpg", video: "", poster: "" },
-        { id: "amigurumi-papa-noel", nombre: "Amigurumi Papá Noel", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido de Papá Noel, con gorro y traje rojos y barba blanca. Medida: 7 cm de alto aprox.",
-          foto: "img/m0159.jpg", video: "", poster: "" },
-        { id: "amigurumi-gatito", nombre: "Amigurumi Gatito Navideño", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido del gatito gris con gorrito de Papá Noel. Medida: 7 cm de alto aprox.",
-          foto: "img/m0160.jpg", video: "", poster: "" },
-        { id: "amigurumi-perrito", nombre: "Amigurumi Perrito Navideño", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido del perrito con gorrito de Papá Noel. Medida: 7 cm de alto aprox.",
-          foto: "img/m0161.jpg", video: "", poster: "" },
-        { id: "amigurumi-jengibre", nombre: "Amigurumi Hombre de Jengibre", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido del Hombre de Jengibre, con botones rojos y detalles en blanco. Medida: 7 cm de alto aprox.",
-          foto: "img/m0162.jpg", video: "", poster: "" },
-        { id: "amigurumi-arbolito", nombre: "Amigurumi Arbolito Tejido", precio: 4000, categoria: "navidad", destacado: true,
-          descripcion: "Figura estilo tejido del arbolito verde con estrella dorada. Medida: 8,5 cm de alto.",
-          foto: "img/m0163.jpg", video: "", poster: "" }
-      ];
-
-      const CATEGORIAS = [
-        { id: "todas", nombre: "Todos" },
-        { id: "corporeas", nombre: "Letras Corpóreas" },
-        { id: "cuadros", nombre: "Cuadros" },
-        { id: "figuras", nombre: "Figuras" },
-        { id: "lamparas", nombre: "Lámparas" },
-        { id: "sensoriales", nombre: "Sensoriales" },
-        { id: "gyros", nombre: "Gyros" },
-        { id: "llaveros", nombre: "Llaveros" },
-        { id: "mates", nombre: "Mates" },
-        { id: "mascotas", nombre: "Mascotas" },
-        { id: "halloween", nombre: "Halloween" },
-        { id: "bebes", nombre: "Bebés" },
-        { id: "placas", nombre: "Placas para Colorear" },
-        { id: "decohome", nombre: "DecoHome" },
-        { id: "navidad", nombre: "Navidad" }
-      ];
-      const WHATSAPP = "5492212000510";
-      /* Datos para la seña por transferencia. La seña es el 50% SOLO del
-         subtotal de productos; el envío se cobra aparte y nunca entra
-         en ese cálculo. */
-      const PAGO = { alias: "Rocket3D.mp", nombre: "Gino Patronelli", dni: "33444198" };
-      function montoSena(subtotalProductos) { return Math.round(subtotalProductos * 0.5); }
-
-      const fmt = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
-      const porId = {};
-      PRODUCTOS.forEach(function (p) { porId[p.id] = p; });
-      const nombreCategoria = {};
-      CATEGORIAS.forEach(function (c) { nombreCategoria[c.id] = c.nombre; });
-
-      /* ---------- Calculadora de envíos PAQ.AR (sin API) ----------
-         Tabla interna con cotizaciones reales tomadas el 29/10/2026 del
-         cotizador público de MiCorreo / Correo Argentino, origen La Plata
-         (CP 1900), para la caja estándar de ROCKET3D de 25 × 15 × 8 cm
-         y hasta 1 kg. No consultar ningún servicio externo. */
-      const SERVICIOS_POR_ZONA = {
-        1: [
-          { id: "clasico-sucursal", nombre: "PAQ.AR Clásico — a sucursal", plazo: "2 a 5 días hábiles", precio: 7750 },
-          { id: "expreso-sucursal", nombre: "PAQ.AR Expreso — a sucursal", plazo: "1 a 3 días hábiles", precio: 10660 },
-          { id: "clasico-domicilio", nombre: "PAQ.AR Clásico — a domicilio", plazo: "2 a 5 días hábiles", precio: 11760 },
-          { id: "expreso-domicilio", nombre: "PAQ.AR Expreso — a domicilio", plazo: "1 a 3 días hábiles", precio: 16170 }
-        ],
-        2: [
-          { id: "clasico-sucursal", nombre: "PAQ.AR Clásico — a sucursal", plazo: "2 a 5 días hábiles", precio: 8530 },
-          { id: "expreso-sucursal", nombre: "PAQ.AR Expreso — a sucursal", plazo: "1 a 3 días hábiles", precio: 15630 },
-          { id: "clasico-domicilio", nombre: "PAQ.AR Clásico — a domicilio", plazo: "2 a 5 días hábiles", precio: 12810 },
-          { id: "expreso-domicilio", nombre: "PAQ.AR Expreso — a domicilio", plazo: "1 a 3 días hábiles", precio: 23480 }
-        ],
-        3: [
-          { id: "clasico-sucursal", nombre: "PAQ.AR Clásico — a sucursal", plazo: "2 a 5 días hábiles", precio: 8910 },
-          { id: "expreso-sucursal", nombre: "PAQ.AR Expreso — a sucursal", plazo: "1 a 3 días hábiles", precio: 20410 },
-          { id: "clasico-domicilio", nombre: "PAQ.AR Clásico — a domicilio", plazo: "2 a 5 días hábiles", precio: 12900 },
-          { id: "expreso-domicilio", nombre: "PAQ.AR Expreso — a domicilio", plazo: "1 a 3 días hábiles", precio: 29580 }
-        ]
-      };
-      const DESTINOS_ENVIO = [
-        { id: "la-plata", nombre: "La Plata — Retiro en persona", especial: "Retiro en persona por zona Plaza Güemes, con previo aviso" },
-        { id: "las-flores", nombre: "Las Flores — Envío gratis", especial: "Envío gratis a Las Flores" },
-        { id: "buenos-aires", nombre: "Buenos Aires (provincia)", zona: 1 },
-        { id: "caba", nombre: "CABA", zona: 1 },
-        { id: "cordoba", nombre: "Córdoba", zona: 1 },
-        { id: "santa-fe", nombre: "Santa Fe", zona: 1 },
-        { id: "entre-rios", nombre: "Entre Ríos", zona: 1 },
-        { id: "la-pampa", nombre: "La Pampa", zona: 1 },
-        { id: "misiones", nombre: "Misiones", zona: 2 },
-        { id: "corrientes", nombre: "Corrientes", zona: 2 },
-        { id: "chaco", nombre: "Chaco", zona: 2 },
-        { id: "formosa", nombre: "Formosa", zona: 2 },
-        { id: "tucuman", nombre: "Tucumán", zona: 2 },
-        { id: "santiago-del-estero", nombre: "Santiago del Estero", zona: 2 },
-        { id: "catamarca", nombre: "Catamarca", zona: 2 },
-        { id: "la-rioja", nombre: "La Rioja", zona: 2 },
-        { id: "san-juan", nombre: "San Juan", zona: 2 },
-        { id: "san-luis", nombre: "San Luis", zona: 2 },
-        { id: "mendoza", nombre: "Mendoza", zona: 2 },
-        { id: "neuquen", nombre: "Neuquén", zona: 2 },
-        { id: "rio-negro", nombre: "Río Negro", zona: 2 },
-        { id: "salta", nombre: "Salta", zona: 3 },
-        { id: "jujuy", nombre: "Jujuy", zona: 3 },
-        { id: "chubut", nombre: "Chubut", zona: 3 },
-        { id: "santa-cruz", nombre: "Santa Cruz", zona: 3 },
-        { id: "tierra-del-fuego", nombre: "Tierra del Fuego", zona: 3 }
-      ];
-      const destinoPorId = {};
-      DESTINOS_ENVIO.forEach(function (d) { destinoPorId[d.id] = d; });
-      let destinoElegido = null; // objeto de DESTINOS_ENVIO o null
-      let servicioElegido = null; // objeto de SERVICIOS_POR_ZONA o null
-
-      /* Estado actual del envío: completo = ya se puede sumar al total. */
-      function infoEnvio() {
-        if (!destinoElegido) return { completo: false, costo: 0, metodo: "", detalle: "" };
-        if (destinoElegido.especial) {
-          return { completo: true, costo: 0, metodo: destinoElegido.nombre, detalle: destinoElegido.especial };
-        }
-        if (!servicioElegido) return { completo: false, costo: 0, metodo: destinoElegido.nombre, detalle: "" };
-        return {
-          completo: true, costo: servicioElegido.precio,
-          metodo: servicioElegido.nombre + " — " + destinoElegido.nombre,
-          detalle: "Plazo estimado: " + servicioElegido.plazo
-        };
-      }
-
-      const carrito = new Map(); // id -> cantidad (solo en memoria, durante la visita)
-      let filtro = "todas";
-      let busqueda = "";
-
-      const grid = document.getElementById("grid");
-      const featuredEl = document.getElementById("featured");
-      const featuredGrid = document.getElementById("featuredGrid");
-      const chipsEl = document.getElementById("chips");
-      const searchEl = document.getElementById("search");
-      const fab = document.getElementById("cartFab");
-      const fabCount = document.getElementById("fabCount");
-      const fabTotal = document.getElementById("fabTotal");
-      const drawer = document.getElementById("drawer");
-      const backdrop = document.getElementById("backdrop");
-      const cartLines = document.getElementById("cartLines");
-      const cartTotal = document.getElementById("cartTotal");
-      const cartNote = document.getElementById("cartNote");
-      const waOrder = document.getElementById("waOrder");
-      const waOrderLabel = document.getElementById("waOrderLabel");
-      const cartSubtotal = document.getElementById("cartSubtotal");
-      const cartShipping = document.getElementById("cartShipping");
-      const shipCalc = document.getElementById("shipCalc");
-      const shipDestinoEl = document.getElementById("shipDestino");
-      const shipSpecial = document.getElementById("shipSpecial");
-      const shipServices = document.getElementById("shipServices");
-      const shipSvcList = document.getElementById("shipSvcList");
-      const shipHint = document.getElementById("shipHint");
-      const payBlock = document.getElementById("payBlock");
-      const paySena = document.getElementById("paySena");
-      const paySaldo = document.getElementById("paySaldo");
-      const copyAliasBtn = document.getElementById("copyAlias");
-      const toast = document.getElementById("toast");
-      let toastTimer = null;
-
-      function esc(s) {
-        return String(s).replace(/[&<>"']/g, function (c) {
-          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-        });
-      }
-
-      function mostrarToast(msg) {
-        toast.textContent = msg;
-        toast.classList.add("show");
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2200);
-      }
-
-      /* ---------- Filtros ---------- */
-      function renderChips() {
-        chipsEl.innerHTML = CATEGORIAS.map(function (c) {
-          return '<button type="button" class="chip" data-cat="' + c.id + '" aria-pressed="' + (filtro === c.id) + '">' + esc(c.nombre) + "</button>";
-        }).join("");
-      }
-      chipsEl.addEventListener("click", function (e) {
-        const b = e.target.closest("[data-cat]");
-        if (!b) return;
-        filtro = b.getAttribute("data-cat");
-        renderChips();
-        renderGrid();
-      });
-      searchEl.addEventListener("input", function () {
-        busqueda = searchEl.value.trim().toLowerCase();
-        renderGrid();
-      });
-
-      /* ---------- Tarjetas ---------- */
-      /* La portada de la tarjeta es SIEMPRE la imagen más descriptiva del
-         producto (su «foto», o el poster si no tuviera foto): nunca un
-         video. Si el producto tiene video, va en la galería del detalle
-         y la tarjeta solo lo anuncia con la insignia «VIDEO».
-         La foto de portada se carga SIN «lazy» a propósito: con carga
-         diferida, las tarjetas de más abajo quedaban con el recuadro
-         oscuro vacío (y la insignia VIDEO encima), lo que se veía como
-         si la portada fuera un video en negro. Con carga inmediata la
-         foto está siempre puesta, en toda la grilla. */
-      function mediaHTML(p) {
-        const badge = p.video ? '<span class="video-badge"><i></i>VIDEO</span>' : "";
-        const src = p.foto || p.poster;
-        if (src) {
-          return '<img class="ph" src="' + src + '" alt="Foto de ' + esc(p.nombre) + '" loading="eager" decoding="async" />' + badge;
-        }
-        return '<div class="tile"><img src="img/logo.png" alt="" /><span>Foto próximamente</span></div>' + badge;
-      }
-      function controlHTML(p) {
-        const q = carrito.get(p.id) || 0;
-        if (q === 0) {
-          return '<button type="button" class="add-btn" data-add="' + p.id + '">+ Agregar</button>';
-        }
-        return '<span class="stepper" role="group" aria-label="Cantidad de ' + esc(p.nombre) + '">' +
-          '<button type="button" data-dec="' + p.id + '" aria-label="Quitar uno">−</button>' +
-          '<span class="qty">' + q + "</span>" +
-          '<button type="button" data-inc="' + p.id + '" aria-label="Agregar uno">+</button></span>';
-      }
-      function precioHTML(p) {
-        if (p.precio == null) return '<span class="price consult">Precio a consultar</span>';
-        const antes = p.antes ? '<s class="antes">' + fmt.format(p.antes) + "</s>" : "";
-        return '<span class="price"><small>' + (p.desde ? "DESDE" : "PRECIO") + "</small>" + antes + fmt.format(p.precio) + "</span>";
-      }
-      function cardHTML(p) {
-        return '<article class="card" data-card="' + p.id + '">' +
-          '<div class="media">' + mediaHTML(p) +
-          '<span class="cat-badge">' + esc(nombreCategoria[p.categoria] || "") + "</span>" +
-          (p.destacado ? '<span class="star-badge">★ Destacado</span>' : "") + "</div>" +
-          '<div class="card-body"><h3>' + esc(p.nombre) + "</h3>" +
-          '<p class="desc">' + esc(p.descripcion) + "</p>" +
-          '<div class="buy-row">' + precioHTML(p) + controlHTML(p) + "</div>" +
-          "</div></article>";
-      }
-      function renderDestacados() {
-        const dest = PRODUCTOS.filter(function (p) { return p.destacado; });
-        dest.sort(function (a, b) { return (a.categoria === "navidad" ? 0 : 1) - (b.categoria === "navidad" ? 0 : 1); });
-        const mostrar = dest.length > 0 && filtro === "todas" && !busqueda;
-        featuredEl.hidden = !mostrar;
-        featuredGrid.innerHTML = mostrar ? dest.map(cardHTML).join("") : "";
-      }
-      function renderGrid() {
-        renderDestacados();
-        const lista = PRODUCTOS.filter(function (p) {
-          const okCat = filtro === "todas" || p.categoria === filtro;
-          const okTxt = !busqueda || (p.nombre + " " + p.descripcion + " " + (nombreCategoria[p.categoria] || "")).toLowerCase().includes(busqueda);
-          return okCat && okTxt;
-        });
-        /* Los destacados de la semana van primero en la vista general. */
-        lista.sort(function (a, b) { return (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0); });
-        if (!lista.length) {
-          grid.innerHTML = '<p class="empty-msg">No encontramos productos con ese criterio. Probá con otra búsqueda o escribinos por WhatsApp.</p>';
-          return;
-        }
-        grid.innerHTML = lista.map(cardHTML).join("");
-      }
-
-      /* ---------- Videos: tocar para reproducir / pausar ---------- */
-      function pausarVideos() {
-        document.querySelectorAll(".media video").forEach(function (v) { v.pause(); });
-        document.querySelectorAll(".play-btn").forEach(function (b) { b.classList.remove("playing"); });
-      }
-      function manejarClickTarjeta(e) {
-        const playBtn = e.target.closest("[data-play]");
-        if (playBtn) {
-          const media = playBtn.closest(".media");
-          const v = media.querySelector("video");
-          if (v.paused) {
-            pausarVideos();
-            v.play();
-            playBtn.classList.add("playing");
-            playBtn.setAttribute("aria-label", "Pausar el video");
-          } else {
-            v.pause();
-            playBtn.classList.remove("playing");
-          }
-          return;
-        }
-        const add = e.target.closest("[data-add]");
-        if (add) { cambiarCantidad(add.getAttribute("data-add"), 1, true); return; }
-        const inc = e.target.closest("[data-inc]");
-        if (inc) { cambiarCantidad(inc.getAttribute("data-inc"), 1, false); return; }
-        const dec = e.target.closest("[data-dec]");
-        if (dec) { cambiarCantidad(dec.getAttribute("data-dec"), -1, false); return; }
-        const card = e.target.closest("[data-card]");
-        if (card) abrirDetalle(card.getAttribute("data-card"));
-      }
-      grid.addEventListener("click", manejarClickTarjeta);
-      featuredGrid.addEventListener("click", manejarClickTarjeta);
-      if ("IntersectionObserver" in window) {
-        const io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (!en.isIntersecting && !en.target.paused) {
-              en.target.pause();
-              const b = en.target.closest(".media").querySelector(".play-btn");
-              if (b) b.classList.remove("playing");
-            }
-          });
-        }, { threshold: 0.25 });
-        const obs = new MutationObserver(function () {
-          document.querySelectorAll(".media video").forEach(function (v) { io.observe(v); });
-        });
-        obs.observe(grid, { childList: true });
-        obs.observe(featuredGrid, { childList: true });
-      }
-
-      /* ---------- Carrito ---------- */
-      function totales() {
-        let items = 0, total = 0, aConsultar = 0;
-        carrito.forEach(function (q, id) {
-          const p = porId[id];
-          items += q;
-          if (p.precio == null) aConsultar += q; else total += p.precio * q;
-        });
-        return { items: items, total: total, aConsultar: aConsultar };
-      }
-      function cambiarCantidad(id, delta, avisar) {
-        const q = (carrito.get(id) || 0) + delta;
-        if (q <= 0) carrito.delete(id); else carrito.set(id, q);
-        renderGrid();
-        renderCarrito();
-        if (detalleId === id) renderDetailBuy();
-        if (avisar && q > 0) {
-          mostrarToast(porId[id].nombre + " agregado al carrito");
-          fab.classList.remove("bump"); void fab.offsetWidth; fab.classList.add("bump");
-        }
-      }
-      /* ---------- Calculadora de envíos: destino y servicio ---------- */
-      function poblarDestinos() {
-        let html = '<option value="">Elegí tu destino…</option>';
-        DESTINOS_ENVIO.forEach(function (d) {
-          html += '<option value="' + d.id + '">' + esc(d.nombre) + "</option>";
-        });
-        shipDestinoEl.innerHTML = html;
-      }
-      function renderServicios() {
-        if (!destinoElegido) {
-          shipSpecial.hidden = true;
-          shipServices.hidden = true;
-          shipHint.hidden = false;
-          shipHint.textContent = "Elegí tu destino para ver el costo de envío al instante: se suma solo al total de tu pedido.";
-          return;
-        }
-        if (destinoElegido.especial) {
-          shipServices.hidden = true;
-          shipHint.hidden = true;
-          shipSpecial.hidden = false;
-          shipSpecial.innerHTML = "<strong>" + esc(destinoElegido.nombre) + '</strong>' +
-            esc(destinoElegido.especial) + '<br /><span class="free-tag">Costo de envío: Gratis</span>';
-          return;
-        }
-        shipSpecial.hidden = true;
-        shipHint.hidden = !!servicioElegido;
-        if (!servicioElegido) shipHint.textContent = "Ahora elegí el servicio: el costo se suma al instante a tu total.";
-        shipServices.hidden = false;
-        const lista = SERVICIOS_POR_ZONA[destinoElegido.zona] || [];
-        shipSvcList.innerHTML = lista.map(function (s) {
-          const checked = servicioElegido && servicioElegido.id === s.id ? " checked" : "";
-          return '<label class="svc-option"><input type="radio" name="shipSvc" value="' + s.id + '"' + checked + " />" +
-            '<span class="svc-info"><span class="svc-name">' + esc(s.nombre) + '</span>' +
-            '<span class="svc-plazo">Plazo: ' + esc(s.plazo) + "</span></span>" +
-            '<span class="svc-price">' + fmt.format(s.precio) + "</span></label>";
-        }).join("");
-      }
-      shipDestinoEl.addEventListener("change", function () {
-        destinoElegido = destinoPorId[shipDestinoEl.value] || null;
-        servicioElegido = null;
-        renderServicios();
-        renderCarrito();
-      });
-      shipSvcList.addEventListener("change", function (e) {
-        const input = e.target.closest('input[name="shipSvc"]');
-        if (!input || !destinoElegido || !destinoElegido.zona) return;
-        const lista = SERVICIOS_POR_ZONA[destinoElegido.zona] || [];
-        servicioElegido = lista.filter(function (s) { return s.id === input.value; })[0] || null;
-        renderServicios();
-        renderCarrito();
-      });
-      function renderCarrito() {
-        const t = totales();
-        const envio = infoEnvio();
-        const totalFinal = t.total + (envio.completo ? envio.costo : 0);
-        fabCount.textContent = t.items;
-        fabTotal.textContent = fmt.format(totalFinal);
-        cartSubtotal.textContent = fmt.format(t.total);
-        cartTotal.textContent = fmt.format(totalFinal);
-        if (!destinoElegido) {
-          cartShipping.textContent = "A coordinar";
-          cartShipping.className = "s-value pending";
-        } else if (!envio.completo) {
-          cartShipping.textContent = "Elegí un servicio";
-          cartShipping.className = "s-value pending";
-        } else if (envio.costo === 0) {
-          cartShipping.textContent = "Gratis";
-          cartShipping.className = "s-value free";
-        } else {
-          cartShipping.textContent = fmt.format(envio.costo);
-          cartShipping.className = "s-value";
-        }
-        waOrderLabel.textContent = envio.completo ? "Pedir por WhatsApp" : "Pedir por WhatsApp · envío a coordinar";
-        shipCalc.hidden = carrito.size === 0;
-        /* Seña: 50% únicamente sobre el subtotal de productos (t.total),
-           nunca sobre el total final con envío. */
-        const sena = montoSena(t.total);
-        paySena.textContent = fmt.format(sena);
-        paySaldo.textContent = fmt.format(t.total - sena);
-        payBlock.hidden = carrito.size === 0 || t.total <= 0;
-        if (carrito.size === 0) {
-          cartLines.innerHTML = '<div class="cart-empty"><img src="img/logo.png" alt="" /><p>Tu carrito está vacío.<br />Sumá productos del catálogo y pedilos por WhatsApp.</p></div>';
-          waOrder.classList.add("disabled");
-          waOrder.removeAttribute("href");
-          cartNote.textContent = "El pago y la entrega se coordinan por WhatsApp.";
-          return;
-        }
-        let html = "";
-        carrito.forEach(function (q, id) {
-          const p = porId[id];
-          const thumb = p.foto
-            ? '<img class="thumb" src="' + p.foto + '" alt="" />'
-            : (p.poster
-              ? '<img class="thumb" src="' + p.poster + '" alt="" />'
-              : '<span class="thumb tile"><img src="img/logo.png" alt="" /></span>');
-          const unit = p.precio == null ? "Precio a consultar" : fmt.format(p.precio) + " c/u";
-          const linea = p.precio == null ? "A consultar" : fmt.format(p.precio * q);
-          html += '<div class="line">' + thumb +
-            '<div class="info"><h4>' + esc(p.nombre) + '</h4><span class="unit">' + unit + "</span>" +
-            '<div class="row2"><span class="stepper">' +
-            '<button type="button" data-cdec="' + id + '" aria-label="Quitar uno">−</button>' +
-            '<span class="qty">' + q + "</span>" +
-            '<button type="button" data-cinc="' + id + '" aria-label="Agregar uno">+</button></span>' +
-            '<span class="line-total">' + linea + "</span></div></div>" +
-            '<button type="button" class="remove" data-remove="' + id + '" aria-label="Quitar ' + esc(p.nombre) + ' del carrito">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>' +
-            "</button></div>";
-        });
-        cartLines.innerHTML = html;
-        const notas = [];
-        if (t.aConsultar > 0) notas.push("Hay productos con precio a consultar: no están sumados en el total.");
-        if (!envio.completo) notas.push("Todavía no elegiste la entrega: el envío queda a coordinar por WhatsApp.");
-        else if (envio.costo === 0) notas.push("Entrega sin costo: " + envio.detalle + ".");
-        else notas.push("Envío incluido en el total: " + envio.metodo + " (" + envio.detalle.toLowerCase() + ").");
-        notas.push("Para confirmar el pedido se abona la seña del 50% de los productos por transferencia al alias " + PAGO.alias + " (el envío se cobra aparte) y se envía el comprobante por WhatsApp.");
-        cartNote.textContent = notas.join(" ");
-        waOrder.classList.remove("disabled");
-        waOrder.setAttribute("href", linkWhatsApp());
-      }
-      cartLines.addEventListener("click", function (e) {
-        const inc = e.target.closest("[data-cinc]");
-        if (inc) { cambiarCantidad(inc.getAttribute("data-cinc"), 1, false); return; }
-        const dec = e.target.closest("[data-cdec]");
-        if (dec) { cambiarCantidad(dec.getAttribute("data-cdec"), -1, false); return; }
-        const rem = e.target.closest("[data-remove]");
-        if (rem) { carrito.delete(rem.getAttribute("data-remove")); renderGrid(); renderCarrito(); }
-      });
-      document.getElementById("clearCart").addEventListener("click", function () {
-        carrito.clear(); renderGrid(); renderCarrito();
-      });
-      copyAliasBtn.addEventListener("click", function () {
-        const done = function () { mostrarToast("Alias copiado: " + PAGO.alias); };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(PAGO.alias).then(done).catch(function () { mostrarToast("Alias: " + PAGO.alias); });
-        } else {
-          mostrarToast("Alias: " + PAGO.alias);
-        }
-      });
-
-      function linkWhatsApp() {
-        const t = totales();
-        const envio = infoEnvio();
-        const totalFinal = t.total + (envio.completo ? envio.costo : 0);
-        /* Seña: 50% SOLO sobre el subtotal de productos, sin envío. */
-        const sena = montoSena(t.total);
-        const saldoProductos = t.total - sena;
-        const lineas = ["Hola ROCKET3D, quiero hacer un pedido:", ""];
-        carrito.forEach(function (q, id) {
-          const p = porId[id];
-          if (p.precio == null) lineas.push("• " + p.nombre + " ×" + q + " — precio a consultar");
-          else lineas.push("• " + p.nombre + " ×" + q + " — " + fmt.format(p.precio * q));
-        });
-        lineas.push("");
-        lineas.push("Subtotal de productos: " + fmt.format(t.total) + (t.aConsultar > 0 ? " (más los productos a consultar)" : ""));
-        if (envio.completo) {
-          lineas.push("Entrega: " + envio.metodo);
-          if (envio.detalle) lineas.push(envio.detalle);
-          lineas.push("Costo de envío: " + (envio.costo === 0 ? "Gratis" : fmt.format(envio.costo)));
-          lineas.push("El precio del envío es aproximado y se cobra aparte: no está incluido en la seña del 50%, que es solo sobre los productos.");
-          lineas.push("Total final: " + fmt.format(totalFinal) + (t.aConsultar > 0 ? " (más los productos a consultar)" : ""));
-        } else if (destinoElegido) {
-          lineas.push("Entrega: " + destinoElegido.nombre + " — servicio a coordinar");
-          lineas.push("Costo de envío: a coordinar");
-          lineas.push("El precio del envío es aproximado y se cobra aparte: no está incluido en la seña del 50%, que es solo sobre los productos.");
-          lineas.push("Total final: " + fmt.format(t.total) + " + envío a coordinar" + (t.aConsultar > 0 ? " (más los productos a consultar)" : ""));
-        } else {
-          lineas.push("Entrega: a coordinar");
-          lineas.push("Costo de envío: a coordinar");
-          lineas.push("El precio del envío es aproximado y se cobra aparte: no está incluido en la seña del 50%, que es solo sobre los productos.");
-          lineas.push("Total final: " + fmt.format(t.total) + " + envío a coordinar" + (t.aConsultar > 0 ? " (más los productos a consultar)" : ""));
-        }
-        if (t.total > 0) {
-          lineas.push("");
-          lineas.push("— Seña para confirmar el pedido —");
-          lineas.push("Alias: " + PAGO.alias);
-          lineas.push("A nombre de: " + PAGO.nombre);
-          lineas.push("DNI: " + PAGO.dni);
-          lineas.push("Seña (50% de los productos): " + fmt.format(sena) + (t.aConsultar > 0 ? " (sobre los productos con precio; los a consultar se suman al confirmarse)" : ""));
-          lineas.push("Saldo de productos: " + fmt.format(saldoProductos));
-          lineas.push("El envío se cobra aparte y su precio es aproximado.");
-          lineas.push("");
-          lineas.push("Te envío el comprobante de la transferencia por este chat para confirmar el pedido.");
-        }
-        lineas.push("");
-        lineas.push("¡Gracias!");
-        return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(lineas.join("\n"));
-      }
-
-      /* ---------- Panel ---------- */
-      function abrirCarrito() {
-        pausarVideos();
-        drawer.hidden = false;
-        requestAnimationFrame(function () {
-          drawer.classList.add("open");
-          backdrop.classList.add("open");
-        });
-        document.body.classList.add("no-scroll");
-        document.getElementById("closeDrawer").focus();
-      }
-      function cerrarCarrito() {
-        drawer.classList.remove("open");
-        backdrop.classList.remove("open");
-        document.body.classList.remove("no-scroll");
-        setTimeout(function () { drawer.hidden = true; }, 320);
-        fab.focus();
-      }
-      fab.addEventListener("click", abrirCarrito);
-      document.getElementById("shipBanner").addEventListener("click", abrirCarrito);
-      document.getElementById("closeDrawer").addEventListener("click", cerrarCarrito);
-      backdrop.addEventListener("click", cerrarCarrito);
-      document.addEventListener("keydown", function (e) {
-        if (e.key !== "Escape") return;
-        if (!document.getElementById("lightbox").hidden) cerrarLightbox();
-        else if (!drawer.hidden) cerrarCarrito();
-        else if (detalleId) cerrarDetalle();
-      });
-
-      /* ---------- Vista de detalle ---------- */
-      const detailEl = document.getElementById("detail");
-      const detailStage = document.getElementById("detailStage");
-      const detailThumbs = document.getElementById("detailThumbs");
-      const detailCat = document.getElementById("detailCat");
-      const detailStar = document.getElementById("detailStar");
-      const detailName = document.getElementById("detailName");
-      const detailDesc = document.getElementById("detailDesc");
-      const detailBuy = document.getElementById("detailBuy");
-      const detailCount = document.getElementById("detailCount");
-      const detailExpand = document.getElementById("detailExpand");
-      let detalleId = null;
-      let detalleItems = [];
-      let detalleIdx = 0;
-
-      /* La galería de un producto: su foto principal, los ítems extra de
-         «galeria» (fotos y videos, en ese orden) y el video, si tiene. */
-      function galeriaDe(p) {
-        const items = [];
-        if (p.foto) items.push({ tipo: "foto", src: p.foto });
-        (p.galeria || []).forEach(function (f) {
-          if (typeof f === "string") items.push({ tipo: "foto", src: f });
-          else if (f && f.video) items.push({ tipo: "video", src: f.video, poster: f.poster || "" });
-        });
-        if (p.video) items.push({ tipo: "video", src: p.video, poster: p.poster || "" });
-        if (!items.length) items.push({ tipo: "tile", src: "img/logo.png" });
-        return items;
-      }
-      /* ---------- Videos: botón de sonido discreto ----------
-         Los videos arrancan en silencio porque es la única forma de que
-         el navegador del celular los reproduzca solos; el botón de sonido
-         (un círculo chico con el ícono del parlante, abajo a la derecha y
-         por encima de la barra de controles del reproductor) los desmutea
-         con un toque — ese toque es el gesto que el navegador exige para
-         dar audio. El botón se muestra unos segundos al aparecer el video
-         o al tocarlo y después se atenúa solo, para no taparlo.
-         La preferencia se mantiene para los demás videos de la visita,
-         que intentan arrancar directamente con sonido. */
-      let sonidoActivo = false;
-      const SVG_SONIDO_OFF = '<svg class="ic-off" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9.5v5h3.6L13 19.4V4.6L7.6 9.5H4z"/><path d="M16.2 9.8l4.6 4.6M20.8 9.8l-4.6 4.6" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>';
-      const SVG_SONIDO_ON = '<svg class="ic-on" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9.5v5h3.6L13 19.4V4.6L7.6 9.5H4z"/><path d="M16 9.6a3.6 3.6 0 0 1 0 4.8M18.6 7.2a7.2 7.2 0 0 1 0 9.6" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>';
-      function videoHTML(it, nombre) {
-        return '<div class="vid-wrap"><video src="' + it.src + '"' + (it.poster ? ' poster="' + it.poster + '"' : "") +
-          ' controls autoplay loop playsinline' + (sonidoActivo ? "" : " muted") +
-          ' aria-label="Video de ' + esc(nombre) + '"></video>' +
-          '<button type="button" class="mute-btn show' + (sonidoActivo ? " on" : "") + '" data-mute-btn aria-label="' +
-          (sonidoActivo ? "Silenciar el video" : "Activar el sonido del video") + '">' +
-          SVG_SONIDO_OFF + SVG_SONIDO_ON +
-          "</button></div>";
-      }
-      function sincronizarBotonSonido(btn, v) {
-        const on = !v.muted;
-        btn.classList.toggle("on", on);
-        btn.setAttribute("aria-label", on ? "Silenciar el video" : "Activar el sonido del video");
-      }
-      /* El botón se ve entero unos segundos y después se atenúa solo;
-         cualquier toque o movimiento sobre el video lo vuelve a mostrar. */
-      function mostrarBotonSonido(wrap) {
-        if (!wrap) return;
-        const btn = wrap.querySelector("[data-mute-btn]");
-        if (!btn) return;
-        btn.classList.add("show");
-        if (wrap._tOcultarBoton) clearTimeout(wrap._tOcultarBoton);
-        wrap._tOcultarBoton = setTimeout(function () { btn.classList.remove("show"); }, 2600);
-      }
-      function prepararBotonSonido(contenedor) {
-        mostrarBotonSonido(contenedor.querySelector(".vid-wrap"));
-      }
-      function actividadEnVideo(e) {
-        const t = e.target;
-        const wrap = t && t.closest ? t.closest(".vid-wrap") : null;
-        if (wrap) mostrarBotonSonido(wrap);
-      }
-      function manejarBotonSonido(e) {
-        const btn = e.target.closest("[data-mute-btn]");
-        if (!btn) return;
-        const wrap = btn.closest(".vid-wrap");
-        const v = wrap ? wrap.querySelector("video") : null;
-        if (!v) return;
-        e.stopPropagation();
-        v.muted = !v.muted;
-        sonidoActivo = !v.muted;
-        if (!v.muted) {
-          v.volume = 1;
-          if (v.paused) { const pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
-        }
-        sincronizarBotonSonido(btn, v);
-        mostrarBotonSonido(wrap);
-      }
-      /* Si el usuario desmutea desde los controles nativos, el botón
-         propio se sincroniza igual (y viceversa). */
-      function alCambiarVolumen(e) {
-        const v = e.target;
-        if (!v || v.tagName !== "VIDEO") return;
-        const wrap = v.closest(".vid-wrap");
-        const btn = wrap ? wrap.querySelector("[data-mute-btn]") : null;
-        if (btn) sincronizarBotonSonido(btn, v);
-      }
-      /* Cuando el sonido ya fue activado en la visita, los próximos
-         videos intentan arrancar con audio; si el navegador lo bloquea,
-         vuelven a silencio y el botón queda en modo silencio. */
-      function intentarPlayConSonido(contenedor) {
-        if (!sonidoActivo) return;
-        const v = contenedor.querySelector(".vid-wrap video");
-        if (!v) return;
-        const pr = v.play();
-        if (pr && pr.catch) pr.catch(function () {
-          v.muted = true;
-          sonidoActivo = false;
-          const btn = contenedor.querySelector("[data-mute-btn]");
-          if (btn) sincronizarBotonSonido(btn, v);
-          v.play().catch(function () {});
-        });
-      }
-
-      function renderDetailStage() {
-        const p = porId[detalleId];
-        const it = detalleItems[detalleIdx];
-        if (!it || it.tipo === "tile") {
-          detailStage.innerHTML = '<div class="d-tile"><img src="img/logo.png" alt="" /><span>Foto próximamente</span></div>';
-        } else if (it.tipo === "video") {
-          detailStage.innerHTML = videoHTML(it, p.nombre);
-        } else {
-          detailStage.innerHTML = '<div class="zoom-wrap"><img class="zoom-img" src="' + it.src + '" alt="Foto de ' + esc(p.nombre) + '" draggable="false" /></div>';
-        }
-        zoomDetalle.reset();
-        intentarPlayConSonido(detailStage);
-        prepararBotonSonido(detailStage);
-        /* Con un video, el botón de ampliar se oculta: el reproductor ya
-           trae su pantalla completa y ese botón tapaba sus controles. */
-        detailExpand.style.display = it && it.tipo === "video" ? "none" : "";
-        detailCount.hidden = detalleItems.length <= 1;
-        detailCount.textContent = (detalleIdx + 1) + " / " + detalleItems.length;
-        detailThumbs.innerHTML = detalleItems.length > 1 ? detalleItems.map(function (it2, i) {
-          const mini = it2.tipo === "video" ? (it2.poster || p.foto || "img/logo.png") : it2.src;
-          return '<button type="button" class="d-thumb' + (it2.tipo === "video" ? " vid" : "") + '" data-thumb="' + i +
-            '" aria-pressed="' + (i === detalleIdx) + '" aria-label="Ver ' + (it2.tipo === "video" ? "el video" : "la foto " + (i + 1)) + '">' +
-            '<img src="' + mini + '" alt="" loading="lazy" /></button>';
-        }).join("") : "";
-      }
-      function renderDetailBuy() {
-        const p = porId[detalleId];
-        if (!p) return;
-        detailBuy.innerHTML = precioHTML(p) + controlHTML(p);
-      }
-      function abrirDetalle(id) {
-        const p = porId[id];
-        if (!p) return;
-        pausarVideos();
-        detalleId = id;
-        detalleIdx = 0;
-        detalleItems = galeriaDe(p);
-        detailCat.textContent = nombreCategoria[p.categoria] || "";
-        detailStar.hidden = !p.destacado;
-        detailName.textContent = p.nombre;
-        detailDesc.textContent = p.descripcion;
-        renderDetailStage();
-        renderDetailBuy();
-        detailEl.hidden = false;
-        detailEl.scrollTop = 0;
-        document.body.classList.add("no-scroll");
-        document.getElementById("detailBack").focus();
-      }
-      function cerrarDetalle() {
-        if (!document.getElementById("lightbox").hidden) cerrarLightbox();
-        detalleId = null;
-        detalleItems = [];
-        detailStage.innerHTML = "";
-        detailThumbs.innerHTML = "";
-        detailEl.hidden = true;
-        document.body.classList.remove("no-scroll");
-      }
-      document.getElementById("detailBack").addEventListener("click", cerrarDetalle);
-      document.getElementById("detailClose").addEventListener("click", cerrarDetalle);
-      detailThumbs.addEventListener("click", function (e) {
-        const t = e.target.closest("[data-thumb]");
-        if (!t) return;
-        detalleIdx = parseInt(t.getAttribute("data-thumb"), 10) || 0;
-        renderDetailStage();
-      });
-      detailBuy.addEventListener("click", function (e) {
-        const add = e.target.closest("[data-add]");
-        if (add) { cambiarCantidad(add.getAttribute("data-add"), 1, true); return; }
-        const inc = e.target.closest("[data-inc]");
-        if (inc) { cambiarCantidad(inc.getAttribute("data-inc"), 1, false); return; }
-        const dec = e.target.closest("[data-dec]");
-        if (dec) { cambiarCantidad(dec.getAttribute("data-dec"), -1, false); }
-      });
-      detailExpand.addEventListener("click", function () { abrirLightbox(); });
-
-      /* ---------- Zoom: rueda del mouse, pinch y arrastre ----------
-         Se aplica sobre la imagen principal del detalle y sobre la
-         vista en pantalla completa. Tocar la imagen del detalle (sin
-         arrastrar) abre la pantalla completa. */
-      function crearZoom(contenedor, alTocar) {
-        let s = 1, tx = 0, ty = 0, moved = false;
-        const pointers = {};
-        let nPointers = 0, pinchDist = 0, pinchScale = 1, drag = null;
-        function img() { return contenedor.querySelector(".zoom-img"); }
-        function aplicar() {
-          const el = img(); if (!el) return;
-          el.style.transform = "translate(" + tx + "px, " + ty + "px) scale(" + s + ")";
-        }
-        function fijar(ns, cx, cy) {
-          const el = img(); if (!el) return;
-          const r = contenedor.getBoundingClientRect();
-          const px = cx - r.left - r.width / 2;
-          const py = cy - r.top - r.height / 2;
-          ns = Math.min(4, Math.max(1, ns));
-          tx = px - (px - tx) * (ns / s);
-          ty = py - (py - ty) * (ns / s);
-          s = ns;
-          if (s === 1) { tx = 0; ty = 0; }
-          aplicar();
-        }
-        contenedor.addEventListener("wheel", function (e) {
-          if (!img()) return;
-          e.preventDefault();
-          fijar(s * (e.deltaY < 0 ? 1.18 : 1 / 1.18), e.clientX, e.clientY);
-        }, { passive: false });
-        contenedor.addEventListener("pointerdown", function (e) {
-          if (!img()) return;
-          pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
-          nPointers = Object.keys(pointers).length;
-          moved = false;
-          if (nPointers === 2) {
-            const pts = Object.values(pointers);
-            pinchDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
-            pinchScale = s;
-          }
-          drag = { x: e.clientX, y: e.clientY, tx: tx, ty: ty };
-          try { contenedor.setPointerCapture(e.pointerId); } catch (err) { /* sin captura: igual funciona el click */ }
-        });
-        contenedor.addEventListener("pointermove", function (e) {
-          if (!pointers[e.pointerId]) return;
-          pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
-          if (nPointers === 2) {
-            const pts = Object.values(pointers);
-            const d = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
-            if (pinchDist > 0) {
-              fijar(pinchScale * d / pinchDist, (pts[0].x + pts[1].x) / 2, (pts[0].y + pts[1].y) / 2);
-              moved = true;
-            }
-          } else if (drag) {
-            const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-            if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
-            if (moved && s > 1) { tx = drag.tx + dx; ty = drag.ty + dy; aplicar(); }
-          }
-        });
-        function soltar(e) {
-          delete pointers[e.pointerId];
-          nPointers = Object.keys(pointers).length;
-          drag = null;
-          if (moved) setTimeout(function () { moved = false; }, 90);
-        }
-        contenedor.addEventListener("pointerup", soltar);
-        contenedor.addEventListener("pointercancel", soltar);
-        contenedor.addEventListener("click", function () {
-          if (!img() || moved) return;
-          if (alTocar) alTocar();
-        });
-        contenedor.addEventListener("dblclick", function (e) {
-          if (!img()) return;
-          if (s > 1) { s = 1; tx = 0; ty = 0; aplicar(); }
-          else fijar(2.5, e.clientX, e.clientY);
-        });
-        return {
-          reset: function () { s = 1; tx = 0; ty = 0; aplicar(); },
-          acercar: function (f) {
-            const r = contenedor.getBoundingClientRect();
-            fijar(s * f, r.left + r.width / 2, r.top + r.height / 2);
-          },
-          escala: function () { return s; }
-        };
-      }
-      const zoomDetalle = crearZoom(detailStage, function () { abrirLightbox(); });
-
-      /* ---------- Pantalla completa ---------- */
-      const lightbox = document.getElementById("lightbox");
-      const lbStage = document.getElementById("lbStage");
-      const lbCount = document.getElementById("lbCount");
-      const lbPrev = document.getElementById("lbPrev");
-      const lbNext = document.getElementById("lbNext");
-      let lbIdx = 0;
-      const zoomLb = crearZoom(lbStage, null);
-      detailStage.addEventListener("click", manejarBotonSonido);
-      detailStage.addEventListener("volumechange", alCambiarVolumen, true);
-      detailStage.addEventListener("pointerdown", actividadEnVideo);
-      detailStage.addEventListener("pointermove", actividadEnVideo);
-      lbStage.addEventListener("click", manejarBotonSonido);
-      lbStage.addEventListener("volumechange", alCambiarVolumen, true);
-      lbStage.addEventListener("pointerdown", actividadEnVideo);
-      lbStage.addEventListener("pointermove", actividadEnVideo);
-      function renderLb() {
-        const p = porId[detalleId];
-        const it = detalleItems[lbIdx];
-        if (!it || it.tipo === "tile") {
-          lbStage.innerHTML = '<div class="d-tile"><img src="img/logo.png" alt="" /><span>Foto próximamente</span></div>';
-        } else if (it.tipo === "video") {
-          lbStage.innerHTML = videoHTML(it, p.nombre);
-        } else {
-          lbStage.innerHTML = '<div class="zoom-wrap"><img class="zoom-img" src="' + it.src + '" alt="Foto de ' + esc(p.nombre) + '" draggable="false" /></div>';
-        }
-        zoomLb.reset();
-        intentarPlayConSonido(lbStage);
-        prepararBotonSonido(lbStage);
-        lbCount.textContent = (lbIdx + 1) + " / " + detalleItems.length;
-        lbPrev.style.display = detalleItems.length > 1 ? "" : "none";
-        lbNext.style.display = detalleItems.length > 1 ? "" : "none";
-      }
-      function abrirLightbox() {
-        if (!detalleId || !detalleItems.length) return;
-        lbIdx = detalleIdx;
-        renderLb();
-        lightbox.hidden = false;
-        document.getElementById("lbClose").focus();
-      }
-      function cerrarLightbox() {
-        if (lightbox.hidden) return;
-        lightbox.hidden = true;
-        lbStage.innerHTML = "";
-        if (detalleId && lbIdx !== detalleIdx) {
-          detalleIdx = lbIdx;
-          renderDetailStage();
-        }
-      }
-      document.getElementById("lbClose").addEventListener("click", cerrarLightbox);
-      lbPrev.addEventListener("click", function () {
-        lbIdx = (lbIdx - 1 + detalleItems.length) % detalleItems.length;
-        renderLb();
-      });
-      lbNext.addEventListener("click", function () {
-        lbIdx = (lbIdx + 1) % detalleItems.length;
-        renderLb();
-      });
-      document.getElementById("lbZoomIn").addEventListener("click", function () { zoomLb.acercar(1.35); });
-      document.getElementById("lbZoomOut").addEventListener("click", function () { zoomLb.acercar(1 / 1.35); });
-      document.getElementById("lbZoomReset").addEventListener("click", function () { zoomLb.reset(); });
-
-      /* ---------- Encabezado: se esconde al bajar, vuelve al subir ----------
-         El buscador y las categorías ya no quedan fijos (se van con el
-         scroll); el encabezado también se retira al bajar para dejar
-         toda la pantalla a los productos, y reaparece apenas el usuario
-         sube, así el botón de WhatsApp nunca queda lejos. */
-      const siteHeader = document.querySelector("header.site");
-      let ultimoScrollY = window.scrollY || 0;
-      window.addEventListener("scroll", function () {
-        const y = window.scrollY || 0;
-        if (y < 90 || y < ultimoScrollY - 6) siteHeader.classList.remove("nav-hidden");
-        else if (y > ultimoScrollY + 6 && y > 220) siteHeader.classList.add("nav-hidden");
-        ultimoScrollY = y;
-      }, { passive: true });
-
-      renderChips();
-      renderGrid();
-      poblarDestinos();
-      renderServicios();
-      renderCarrito();
-    </script>
-  </body>
+F.forEach(s => $(s).addEventListener("input", update));
+$("#f-color").addEventListener("change", update);
+$("#test").onclick = () => { location.hash = "#d=" + enc(values()); };
+$("#copy").onclick = async () => {
+  const t = $("#link").textContent, b = $("#copy");
+  try { await navigator.clipboard.writeText(t); }
+  catch (e) { const r = document.createRange(); r.selectNodeContents($("#link")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand("copy"); }
+  b.textContent = "Link copiado";
+  setTimeout(() => b.textContent = "Copiar link", 2000);
+};
+addEventListener("hashchange", route);
+route();
+</script>
+</body>
 </html>
